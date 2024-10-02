@@ -1,0 +1,81 @@
+baseURL = 'https://javchudutch.github.io/'
+
+title = 'My New Hugo Site'
+theme = 'ananke'
+defaultContentLanguage = 'uk'
+enableRobotsTXT = true
+
+[sitemap]
+changefreq = "monthly"
+priority = 0.5
+filename = "sitemap.xml"
+
+[languages]
+
+[languages.uk]
+disabled = false
+languageCode = 'uk'
+languageDirection = ''
+languageName = 'Українська'
+weight = 0
+title = 'JaVchuDutch - вчимо нідерландську мову разом'
+[languages.uk.menus]
+[[languages.uk.menus.main]]
+name = 'Публікації'
+pageRef = '/posts'
+weight = 1
+[[languages.uk.menus.main]]
+name = 'Ресурси'
+pageRef = '/resources'
+weight = 2
+[[languages.uk.menus.main]]
+name = 'Про мене'
+pageRef = '/about'
+weight = 3
+[[languages.uk.menus.main]]
+name = 'Контакт'
+pageRef = '/contact'
+weight = 4
+
+[languages.nl]
+disabled = false
+languageCode = 'nl'
+languageDirection = ''
+languageName = 'Nederlands'
+weight = 1
+title = 'JaVchuDutch - Leer Nederlands samen'
+[languages.nl.menus]
+[[languages.nl.menus.main]]
+name = 'Publicaties'
+pageRef = '/posts'
+weight = 1
+[[languages.nl.menus.main]]
+name = 'Bronnen'
+pageRef = '/resources'
+weight = 2
+[[languages.nl.menus.main]]
+name = 'Over mij'
+pageRef = '/about'
+weight = 3
+[[languages.nl.menus.main]]
+name = 'Contact'
+pageRef = '/contact'
+weight = 4
+
+[params]
+site_logo = "images/logo.jpg"
+favicon = "img/favicon/favicon.ico"
+author = "JaVchuDutch"
+mainSections = ["posts"]
+# choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+background_color_class = "bg-black"
+recent_posts_number = 3
+[[params.ananke_socials]]
+name = 'instagram'
+url = 'https://instagram.com/javchudutch'
+[[params.ananke_socials]]
+name = 'facebook'
+url = 'https://www.facebook.com/javchudutch'
+[[params.ananke_socials]]
+name = 'email'
+url = 'mailto:javchudutch@gmail.com'
