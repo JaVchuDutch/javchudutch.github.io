@@ -15,3 +15,6 @@ omit_header_text = true
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-trainer)
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
+
+Списки слів які використовуються чат-ботами опубліковані за [посиланням](https://docs.google.com/spreadsheets/d/1b4Gwv3IkfEAna7H_1hwCx1HamKP_rTBI_0ivvYzBge8/edit?gid=0#gid=0).
+Якщо ви маєта зауваження або пропозиції до змін, будь ласка використувуйте функцію коментування.
