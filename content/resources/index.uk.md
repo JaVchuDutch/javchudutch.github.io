@@ -11,7 +11,7 @@ omit_header_text = true
     - [Telegram](https://t.me/YaVchuDutchPrepositiesTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-prepositie-trainer)
 - Чат-бот для вивчення форм дієслів
-    - [Telegram](https://t.me/YaVchuDutchWerkwoordTrainerBot)
+    - [Telegram](https://t.me/YaVchuDutchWerkwoordenTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-trainer)
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
