@@ -78,4 +78,9 @@ name = 'facebook'
 url = 'https://www.facebook.com/javchudutch'
 [[params.ananke_socials]]
 name = 'email'
+label = 'Email'
 url = 'mailto:javchudutch@gmail.com'
+[[params.ananke_socials]]
+name = 'buymeacoffee'
+label = 'Buy me a coffee'
+url = 'https://buymeacoffee.com/javchudutch'
