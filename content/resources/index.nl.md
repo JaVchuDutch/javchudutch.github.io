@@ -13,6 +13,9 @@ omit_header_text = true
 - Chatbot voor het leren van werkwoordsvormen
     - [Telegram](https://t.me/YaVchuDutchWerkwoordenTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-trainer)
+- Chatbot voor het leren van zelfstandige naamwoorden
+    - [Telegram](https://t.me/JaVchuDutchNaamwoordenTrainerBot)
+    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer)
 - Oefenen met spreekvaardigheid
     - [Zinnen om te oefenen](/speech/)
 
