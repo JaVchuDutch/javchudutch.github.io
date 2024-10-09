@@ -5,6 +5,9 @@ theme = 'ananke'
 defaultContentLanguage = 'uk'
 enableRobotsTXT = true
 
+[pagination]
+  pagerSize = 100
+
 [sitemap]
 changefreq = "monthly"
 priority = 0.5
