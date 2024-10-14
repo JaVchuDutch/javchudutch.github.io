@@ -2,11 +2,6 @@
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
     <article class="center cf pv5 ph3 ph4-ns w-100">
-      <header>
-        <h1 class="f1">
-          {{ .Title }}
-        </h1>
-      </header>
       <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }}">
         <custom-content></content>
         <script>
@@ -18,15 +13,13 @@
                 }
 
                 connectedCallback() {
-                    // Fetch the external HTML content
-                    const html = `{{ .Content }}`;
-                            this.shadowRoot.innerHTML = `{{.Content}}`; // Inject into shadowRoot
+                    this.shadowRoot.innerHTML = `{{.Content}}`; // Inject into shadowRoot
 
-                            // Process the scripts manually and execute them in the shadow DOM context
-                            const scripts = this.shadowRoot.querySelectorAll('script');
-                            scripts.forEach(script => {
-                                this.executeScript(script);
-                            });
+                    // Process the scripts manually and execute them in the shadow DOM context
+                    const scripts = this.shadowRoot.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        this.executeScript(script);
+                    });
                 }
 
                 executeScript(script) {
