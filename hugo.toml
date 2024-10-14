@@ -5,6 +5,10 @@ theme = 'ananke'
 defaultContentLanguage = 'uk'
 enableRobotsTXT = true
 
+[frontmatter]
+lastmod = ['lastmod', ':fileModTime', ':default']
+date = [':filename', ':default']
+
 [pagination]
   pagerSize = 100
 
