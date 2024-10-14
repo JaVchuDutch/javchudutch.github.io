@@ -1,4 +1,4 @@
-baseURL = 'https://javchudutch.github.io/'
+baseURL = 'https://javchudutch.com/'
 
 title = 'My New Hugo Site'
 theme = 'ananke'

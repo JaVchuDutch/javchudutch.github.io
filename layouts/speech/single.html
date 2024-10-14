@@ -1,8 +1,11 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
   <div class="flex-l mt2 mw8 center">
-    <article class="center cf pv5 ph3 ph4-ns w-100">
+    <article class="center cf pv5 ph3 ph4-ns w-100 h-100">
       <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }}">
+        <template id="content">
+          {{ .Content }}
+        </template>
         <custom-content></content>
         <script>
             class MyComponent extends HTMLElement {
@@ -13,7 +16,7 @@
                 }
 
                 connectedCallback() {
-                    this.shadowRoot.innerHTML = `{{.Content}}`; // Inject into shadowRoot
+                    this.shadowRoot.innerHTML = document.getElementById('content').innerHTML;
 
                     // Process the scripts manually and execute them in the shadow DOM context
                     const scripts = this.shadowRoot.querySelectorAll('script');
