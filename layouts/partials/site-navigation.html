@@ -15,12 +15,19 @@
         {{ partial "i18nlist.html" . }}
         {{ if .Site.Menus.main }}
           <ul class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+            {{- range (where .Ancestors "Section" .Section).Reverse }}
+              <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+                <a class="hover-white no-underline white-90" href="{{ .RelPermalink }}" title="{{ .Title }}">
+                  {{ .Title }}
+                </a>
+              </li>
+            {{- end }}
             {{ range .Site.Menus.main }}
-            <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
-              <a class="hover-white no-underline white-90" href="{{ .URL }}" title="{{ i18n "pageTitle" . }}">
-                {{ .Name }}
-              </a>
-            </li>
+              <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+                <a class="hover-white no-underline white-90" href="{{ .URL }}" title="{{ i18n "pageTitle" . }}">
+                  {{ .Name }}
+                </a>
+              </li>
             {{ end }}
           </ul>
         {{ end }}
