@@ -1,1 +1,59 @@
-{{ .Content }}
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns w-100">
+      <header>
+        <h1 class="f1">
+          {{ .Title }}
+        </h1>
+      </header>
+      <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }}">
+        <custom-content></content>
+        <script>
+            class MyComponent extends HTMLElement {
+                constructor() {
+                    super();
+                    // Attach the shadow DOM to this component
+                    this.attachShadow({ mode: 'open' });
+                }
+
+                connectedCallback() {
+                    // Fetch the external HTML content
+                    const html = `{{ .Content }}`;
+                            this.shadowRoot.innerHTML = `{{.Content}}`; // Inject into shadowRoot
+
+                            // Process the scripts manually and execute them in the shadow DOM context
+                            const scripts = this.shadowRoot.querySelectorAll('script');
+                            scripts.forEach(script => {
+                                this.executeScript(script);
+                            });
+                }
+
+                executeScript(script) {
+                    const newScript = document.createElement('script');
+                    if (script.src) {
+                        // If the script has a src attribute (external script)
+                        newScript.src = script.src;
+                        this.shadowRoot.appendChild(newScript);
+                    } else {
+                        // If the script is inline
+                        const content = `(document) => {${script.textContent}}`
+                        const scriptFunction = eval(content);
+                        scriptFunction(this.shadowRoot); // Execute the script in the shadow DOM context
+                        // fire DOMContentLoaded event
+                        const event = new Event('DOMContentLoaded', {
+                            bubbles: true,
+                            cancelable: true,
+                        });
+                        this.shadowRoot.dispatchEvent(event);
+                    }
+                }
+            }
+
+            // Define the custom element
+            customElements.define('custom-content', MyComponent);
+        </script>
+      </div>
+    </article>
+  </div>
+{{ end }}

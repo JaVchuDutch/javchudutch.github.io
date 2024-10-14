@@ -5,6 +5,7 @@ More info here: https://github.com/theNewDynamic/gohugo-theme-ananke/releases/ta
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <h1 class="f3 near-black">
       <a href="{{ .RelPermalink }}" class="link black dim">
+        {{ if .IsSection }}📁{{else}}📄{{end}}
         {{ if .IsSection }}
           {{ .Title }}
         {{ else }}
