@@ -11,7 +11,7 @@
       {{ $pages := (where .Site.AllPages "Section" .Section).ByTitle }}
       {{ range $pages }}
         {{ if (or (and (eq .File.Dir $section.File.Dir) (not .IsSection)) (eq .Parent $section))  }}
-          <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 w-30-l mb4 bg-white{{ if .IsSection }} shadow-5{{end}}">
               {{ .Render "link" }}
           </div>
         {{ end }}
