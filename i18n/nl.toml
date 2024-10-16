@@ -1,2 +1,11 @@
 translations = 'Lees in een andere taal'
 ariaTranslation = 'Lees in een andere taal:'
+
+[consent.prompt]
+text = 'We zouden graag {{ .thirdParty }} willen gebruiken om de functionaliteit van deze website te verbeteren.'
+thirdParty = 'de code van derden'
+managePreferences = 'Beheer voorkeuren'
+deny = 'Weigeren'
+allow = 'Toestaan'
+allowAll = 'Allemaal toestaan'
+savePreferences = 'Voorkeuren opslaan'
