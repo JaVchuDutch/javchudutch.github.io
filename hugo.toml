@@ -1,13 +1,9 @@
 baseURL = 'https://javchudutch.com/'
 
-title = 'My New Hugo Site'
+title = 'Ja Vchu Dutch - Learn Dutch together'
 theme = 'ananke'
 defaultContentLanguage = 'uk'
 enableRobotsTXT = true
-
-[services]
-  [services.googleAnalytics]
-    id = 'G-JMJZWSMNS3'
 
 [frontmatter]
 lastmod = ['lastmod', ':fileModTime', ':default']
@@ -47,6 +43,13 @@ weight = 3
 name = 'Контакт'
 pageRef = '/contact'
 weight = 4
+[languages.uk.params]
+[languages.uk.params.consent]
+[[languages.uk.params.consent.items]]
+title = 'Google Anaytics'
+description = 'Ми використовуємо Google Analytics для збору анонімних даних про відвідувачів нашого сайту.'
+is_functional = false
+script_file = 'ga.js'
 
 [languages.nl]
 disabled = false
@@ -72,6 +75,11 @@ weight = 3
 name = 'Contact'
 pageRef = '/contact'
 weight = 4
+[[languages.nl.params.consent.items]]
+title = 'Google Anaytics'
+description = 'We gebruiken Google Analytics om anonieme gegevens over bezoekers van onze site te verzamelen.'
+is_functional = false
+script_file = 'ga.js'
 
 [params]
 site_logo = "images/logo.jpg"
@@ -95,3 +103,9 @@ url = 'mailto:javchudutch@gmail.com'
 name = 'buymeacoffee'
 label = 'Buy me a coffee'
 url = 'https://buymeacoffee.com/javchudutch'
+
+[[params.consent.items]]
+title = 'Google Anaytics'
+description = 'We use Google Analytics to collect anonymous data about visitors to our site.'
+is_functional = false
+script_file = 'ga.js'

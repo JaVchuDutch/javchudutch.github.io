@@ -1,2 +1,11 @@
 translations = 'Читати іншою мовою'
 ariaTranslation = 'Читати іншою мовою:'
+
+[consent.prompt]
+text = 'Ми хотіли б використовувати {{ .thirdParty }} для покращення функціональності цього веб-сайту.'
+thirdParty = 'сторонній код'
+managePreferences = 'Управління налаштуваннями'
+deny = 'Відмовити'
+allow = 'Дозволити'
+allowAll = 'Дозволити все'
+savePreferences = 'Зберегти налаштування'

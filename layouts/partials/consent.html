@@ -1,0 +1,147 @@
+{{ $thirdParty := printf "<a class=\"manage-consent black\" href=\"#manage-consent\">%s</a>" (i18n "consent.prompt.thirdParty") }}
+<div id="consent-notice" class="pa3 tc fixed bottom-0 w-100 bg-gold z-9999 dn">
+    <span class="mr3">{{ i18n "consent.prompt.text" (dict "thirdParty" $thirdParty) | safeHTML }}</span>
+    <button class="btn manage-consent pointer dib bg-gold">{{ i18n "consent.prompt.managePreferences" }}</button>
+    <button class="btn deny-consent pointer dib ml2 bg-gold">{{ i18n "consent.prompt.deny" }}</button>
+    <button class="btn approve-consent pointer dib ml2 bg-gold">{{ i18n "consent.prompt.allow" }}</button>
+</div>
+<div id="consent-overlay" class="fixed top-0 left-0 w-100 h-100 vh-100 bg-black-70 z-9999 dn">
+    <div class="bg-white w-100 mw6 pa4 center" style="margin-top: 20%;">
+        {{ range $index, $item := .Site.Params.consent.items }}
+            <div class="mb3 flex items-center">
+                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" class="mr2" {{ if $item.is_functional }}checked disabled{{ end }} />
+                <label for="item{{ $index }}">
+                    <h3 class="mt0">{{ $item.title }}</h3>
+                    <p>{{ $item.description }}</p>
+                </label>
+            </div>
+        {{ end }}
+        <div class="flex justify-end">
+            <button id="save-consent" class="btn save-consent bg-dark-gray white pointer mr2" data-consentvalue="{{ range $index, $item := .Site.Params.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">{{ i18n "consent.prompt.savePreferences" }}</button>
+            <button class="btn approve-consent bg-dark-gray white pointer">{{ i18n "consent.prompt.allowAll" }}</button>
+        </div>
+    </div>
+</div>
+<script>
+
+    const scripts = [];{{ range $index, $item := (where .Site.Params.consent.items "is_functional" false) }}
+    scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
+
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+    function denyAllConsentScripts() {
+        var consentValue = "";
+        scripts.forEach(function(){
+            consentValue = consentValue + "0";
+        });
+        acceptSomeConsentScripts(consentValue);
+    }
+    function acceptAllConsentScripts() {
+        var consentValue = "";
+        scripts.forEach(function(){
+            consentValue = consentValue + "1";
+        });
+        acceptSomeConsentScripts(consentValue);
+    }
+    function acceptSomeConsentScripts(consentValue) {
+        setConsentInputs(consentValue);
+        createCookie('consent-settings',consentValue,31);
+        document.getElementById('consent-notice').style.display = 'none';
+        document.getElementById('consent-overlay').classList.add('dn');
+        loadConsentScripts(consentValue);
+    }
+    function loadConsentScripts(consentValue) {
+        scripts.forEach(function(value,key){
+            //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
+            if(consentValue[key]=="1") {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.src = value;
+                document.body.appendChild(s);
+            }
+        });
+    }
+    function setConsentInputs(consentValue) {
+        var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
+        elements.forEach(function(el,index) {
+            if(consentValue[index]=="1") el.checked = true;
+            else el.checked = false;
+        });
+    }
+    function setConsentValue() {
+        var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
+        var consentValue = "";
+        elements.forEach(function(el) {
+            if(el.checked) consentValue = consentValue + "1";
+            else consentValue = consentValue + "0";
+        });
+        document.getElementById("save-consent").dataset.consentvalue = consentValue;
+    }
+
+    var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
+    elements.forEach(function(el) {
+        el.checked = false;
+    });
+
+    if(readCookie('consent-settings')) {
+        var consentValue = readCookie('consent-settings').toString();
+        //console.log(consentValue);
+        setConsentInputs(consentValue);
+        loadConsentScripts(consentValue);
+    } else {
+        document.getElementById('consent-notice').style.display = 'block';
+    }
+    var elements = document.querySelectorAll('.manage-consent');
+    elements.forEach(function(el) {
+        el.addEventListener("click",function() {
+            document.getElementById('consent-overlay').classList.toggle('dn');
+        });
+    });
+    var elements = document.querySelectorAll('.deny-consent');
+    elements.forEach(function(el) {
+        el.addEventListener("click",function() {
+            denyAllConsentScripts();
+        });
+    });
+    var elements = document.querySelectorAll('.approve-consent');
+    elements.forEach(function(el) {
+        el.addEventListener("click",function() {
+            acceptAllConsentScripts();
+        });
+    });
+    document.getElementById("save-consent").addEventListener("click",function() {
+        setConsentValue();
+        acceptSomeConsentScripts(this.dataset.consentvalue);
+    });
+    document.getElementById("consent-overlay").addEventListener("click",function(e) {
+        if (!document.querySelector("#consent-overlay > div").contains(e.target)){
+            this.classList.toggle('dn');
+        }
+    });
+</script>
+
+{{ range $index, $item := .Site.Params.consent.items }}
+    {{ if $item.is_functional }}
+        <script type="text/javascript" src="/js/{{ $item.script_file }}"></script>
+    {{ end }}
+{{ end }}
