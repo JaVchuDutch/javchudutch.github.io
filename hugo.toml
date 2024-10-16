@@ -5,6 +5,10 @@ theme = 'ananke'
 defaultContentLanguage = 'uk'
 enableRobotsTXT = true
 
+[services]
+  [services.googleAnalytics]
+    id = 'G-JMJZWSMNS3'
+
 [frontmatter]
 lastmod = ['lastmod', ':fileModTime', ':default']
 date = [':filename', ':default']
