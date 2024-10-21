@@ -6,3 +6,4 @@ omit_header_text = true
 +++
 
 ### Neem contact met mij op via:
+{{< contacts >}}
