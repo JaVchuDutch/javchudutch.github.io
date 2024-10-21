@@ -10,7 +10,7 @@ lastmod = ['lastmod', ':fileModTime', ':default']
 date = [':filename', ':default']
 
 [pagination]
-  pagerSize = 100
+pagerSize = 100
 
 [sitemap]
 changefreq = "monthly"
@@ -89,20 +89,59 @@ mainSections = ["posts"]
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-black"
 recent_posts_number = 3
-[[params.ananke_socials]]
-name = 'instagram'
-url = 'https://instagram.com/javchudutch'
-[[params.ananke_socials]]
-name = 'facebook'
-url = 'https://www.facebook.com/javchudutch'
-[[params.ananke_socials]]
-name = 'email'
-label = 'Email'
-url = 'mailto:javchudutch@gmail.com'
-[[params.ananke_socials]]
-name = 'buymeacoffee'
-label = 'Buy me a coffee'
-url = 'https://buymeacoffee.com/javchudutch'
+
+[params.ananke.social.instagram]
+username = 'javchudutch'
+[params.ananke.social.facebook]
+username = 'javchudutch'
+[params.ananke.social.email]
+username = 'javchudutch@gmail.com'
+[params.ananke.social.buymeacoffee]
+username = 'javchudutch'
+
+[[params.ananke.social.networks]]
+slug = "email"
+label = "Email"
+icon = "envelope"     # font awesome free icon name
+profile = "mailto:%s"
+link = "mailto:"
+[params.ananke.social.networks.particles]
+body = "permalink"
+subject = "title"
+
+[[params.ananke.social.networks]]
+slug = "facebook"
+label = "Facebook"
+color = "#3b5998"
+profile = "https://www.facebook.com/%s"
+icon = "facebook"                               # font awesome brand icon name
+link = "https://facebook.com/sharer/sharer.php"
+[params.ananke.social.networks.particles]
+u = "permalink"
+
+[[params.ananke.social.networks]]
+slug = "instagram"
+label = "Instagram"
+color = "#e1306c"
+profile = "https://www.instagram.com/%s/"
+icon = "instagram"                        # font awesome brand icon name
+
+[[params.ananke.social.networks]]
+slug = "buymeacoffee"
+label = "Buy me a coffee"
+color = "#f5d607"
+profile = "https://buymeacoffee.com/%s"
+icon = "buymeacoffee"                   # font awesome brand icon name
+share = false
+
+[params.ananke.social.follow]
+new_window_icon = false
+networks = ["facebook", "instagram", "email", "buymeacoffee"]
+
+[params.ananke.social.share]
+icons = true
+sharetext = true
+networks = ["facebook", "instagram", "email", "buymeacoffee"]
 
 [[params.consent.items]]
 title = 'Google Anaytics'
