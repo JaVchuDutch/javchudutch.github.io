@@ -16,6 +16,9 @@ omit_header_text = true
 - Чат-бот для вивчення іменників
     - [Telegram](https://t.me/JaVchuDutchNaamwoordenTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer)
+- Чат-бот для вивчення перекладів слів
+    - [Telegram](https://t.me/JaVchuDutchVertalingenTrainerBot)
+    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer)
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
 

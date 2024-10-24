@@ -16,6 +16,9 @@ omit_header_text = true
 - Chatbot voor het leren van zelfstandige naamwoorden
     - [Telegram](https://t.me/JaVchuDutchNaamwoordenTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer)
+- Chatbot voor het leren van woorden vertalingen
+    - [Telegram](https://t.me/JaVchuDutchVertalingenTrainerBot)
+    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer)
 - Oefenen met spreekvaardigheid
     - [Zinnen om te oefenen](/speech/)
 
