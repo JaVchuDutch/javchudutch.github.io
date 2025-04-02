@@ -57,7 +57,7 @@ languageCode = 'nl'
 languageDirection = ''
 languageName = 'Nederlands'
 weight = 1
-title = 'Ja Vchu Dutch - Leer Nederlands samen'
+title = 'Ja Vchu Dutch - Leren Nederlands samen'
 [languages.nl.menus]
 [[languages.nl.menus.main]]
 name = 'Publicaties'
