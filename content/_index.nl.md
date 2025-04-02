@@ -1,5 +1,5 @@
 +++
-title = 'Leeren Nederlands samen'
+title = 'Leren Nederlands samen'
 date = 2024-10-02T17:42:29+02:00
 draft = false
 [cascade]
