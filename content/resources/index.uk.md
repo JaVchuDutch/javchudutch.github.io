@@ -8,20 +8,20 @@ omit_header_text = true
 ### Корисні посилання для вивчення нідерландської мови:
 
 - Чат-бот для вивчення препозицій дієслів
-    - [Telegram](https://t.me/YaVchuDutchPrepositiesTrainerBot)
-    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-prepositie-trainer)
+    - <a href="https://t.me/YaVchuDutchPrepositiesTrainerBot" target="_blank">Telegram</a>
+    - <a href="https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-prepositie-trainer" target="_blank">Web</a>
 - Чат-бот для вивчення форм дієслів
-    - [Telegram](https://t.me/YaVchuDutchWerkwoordenTrainerBot)
-    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-trainer)
+    - <a href="https://t.me/YaVchuDutchWerkwoordenTrainerBot" target="_blank">Telegram</a>
+    - <a href="https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-trainer" target="_blank">Web</a>
 - Чат-бот для вивчення іменників
-    - [Telegram](https://t.me/JaVchuDutchNaamwoordenTrainerBot)
-    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer)
+    - <a href="https://t.me/JaVchuDutchNaamwoordenTrainerBot" target="_blank">Telegram</a>
+    - <a href="https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer" target="_blank">Web</a>
 - Чат-бот для вивчення перекладів слів
-    - [Telegram](https://t.me/JaVchuDutchVertalingenTrainerBot)
-    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer)
+    - <a href="https://t.me/JaVchuDutchVertalingenTrainerBot" target="_blank">Telegram</a>
+    - <a href="https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer" target="_blank">Web</a>
 - Чат-бот для вивчення перекладів слів з особистого словника
-    - [Telegram](https://t.me/JaVchuDutchPWVTrainerBot)
-    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/persoonlijke-woorden-trainer)
+    - <a href="https://t.me/JaVchuDutchPWVTrainerBot" target="_blank">Telegram</a>
+    - <a href="https://botsrv2.com/qb/ja-vchu-dutch/persoonlijke-woorden-trainer" target="_blank">Web</a>
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
 
