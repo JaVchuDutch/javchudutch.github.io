@@ -19,6 +19,9 @@ omit_header_text = true
 - Чат-бот для вивчення перекладів слів
     - [Telegram](https://t.me/JaVchuDutchVertalingenTrainerBot)
     - [Web](https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer)
+- Чат-бот для вивчення перекладів слів з особистого словника
+    - [Telegram](https://t.me/JaVchuDutchPWVTrainerBot)
+    - [Web](https://botsrv2.com/qb/ja-vchu-dutch/persoonlijke-woorden-trainer)
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
 
