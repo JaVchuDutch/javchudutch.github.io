@@ -148,3 +148,6 @@ title = 'Google Anaytics'
 description = 'We use Google Analytics to collect anonymous data about visitors to our site.'
 is_functional = false
 script_file = 'ga.js'
+
+[markup.goldmark.renderer]
+unsafe = true
