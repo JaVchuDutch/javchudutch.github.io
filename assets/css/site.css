@@ -10,7 +10,8 @@
   --surface: #ffffff;
   --text: #111111;
   --text-muted: #555555;
-  --text-faint: #777777;
+  /* #777777 measured 4.47:1 on white -- just under WCAG AA's 4.5:1. */
+  --text-faint: #6b6b6b;
   --border: #e6e6e6;
   --accent: #1a4fd6;
   --header-bg: #000000;
@@ -260,6 +261,14 @@ body > main { flex: 1 0 auto; }
   box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
 }
 
+/* Names the dialog for assistive technology; kept visually modest so the card
+   still reads as a small panel rather than a page. */
+.consent-card__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 .consent-item {
   display: flex;
   align-items: flex-start;
@@ -448,4 +457,41 @@ body > main { flex: 1 0 auto; }
     padding-right: 0;
     text-align: center;
   }
+}
+
+/* ---- skip link ----------------------------------------------------------- */
+
+/* The header carries the menu, four social icons and two toggles, so reaching
+   the article by keyboard meant a dozen tab stops on every page. Off-screen
+   until focused, then it drops into the top-left corner. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: .6rem 1rem;
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* The anchor the skip link lands on takes focus programmatically; it should
+   not draw a ring of its own. */
+#main-content:focus { outline: none; }
+
+/* ---- language switcher --------------------------------------------------- */
+
+/* The current language is shown but not linked -- a link to the page you are
+   already on is a dead end. It stays dimmer than the switchable one so the
+   pair reads as "you are here / go there". */
+.lang-switch__current {
+  color: #ffffff;
+  opacity: .55;
+  cursor: default;
 }

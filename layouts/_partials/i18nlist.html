@@ -1,9 +1,29 @@
+{{/* The theme lists only .Translations, so on a Ukrainian page the switcher was
+     a lone "Nederlands" with nothing saying what you were reading now. Both
+     languages are listed and the current one is marked instead.
+
+     Each label is written in its own language, which is the convention and the
+     only form a speaker of that language is sure to recognise. lang/hreflang
+     let a screen reader pronounce "Nederlands" with Dutch phonemes rather than
+     reading it through the page language. */}}
 {{ if .IsTranslated }}
-<ul aria-label="{{ i18n "translations" }}" class="{{ cond (eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
-    {{ range .Translations }}
+<ul aria-label="{{ i18n "language" }}" class="lang-switch {{ cond (eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
+    {{/* .AllTranslations comes back in an order of its own. Sorting by the
+         weight set in hugo.toml fixes the order instead, so the pair sits in
+         the same place on every page rather than swapping as you switch. */}}
+    {{ range sort .AllTranslations "Language.Weight" }}
+    {{ $current := eq .Language.Lang $.Language.Lang }}
     <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
-        <a aria-label="{{ i18n "ariaTranslation" }} {{ .Language.Label }}" class="hover-white no-underline white-90" href="{{ .RelPermalink }}">{{ .Language.Label }}</a>
+        {{ if $current }}
+        <span class="lang-switch__current" lang="{{ .Language.Lang }}" aria-current="true"
+              title="{{ .Language.Label }}">{{ .Language.Label }}</span>
+        {{ else }}
+        <a class="hover-white no-underline white-90" href="{{ .RelPermalink }}"
+           lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}"
+           title="{{ i18n "ariaTranslation" }} {{ .Language.Label }}"
+           aria-label="{{ i18n "ariaTranslation" }} {{ .Language.Label }}">{{ .Language.Label }}</a>
+        {{ end }}
     </li>
-    {{ end}}
+    {{ end }}
 </ul>
 {{ end }}

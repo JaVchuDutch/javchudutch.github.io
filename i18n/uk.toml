@@ -1,9 +1,12 @@
 translations = 'Читати іншою мовою'
 ariaTranslation = 'Читати іншою мовою:'
+language = 'Мова'
 
 reviewSource = 'Читати оригінал'
 
 themeToggle = 'Перемкнути тему'
+
+skipToContent = 'Перейти до вмісту'
 
 menu = 'Меню'
 

@@ -5,7 +5,7 @@ draft = false
 omit_header_text = true
 +++
 
-### Корисні посилання для вивчення нідерландської мови:
+## Корисні посилання для вивчення нідерландської мови:
 
 - Чат-бот для вивчення прийменників при дієсловах
     - <a href="https://t.me/YaVchuDutchPrepositiesTrainerBot" target="_blank">Telegram</a>

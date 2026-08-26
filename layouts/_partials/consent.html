@@ -2,7 +2,10 @@
      preferences dialog, which both misled (it looks like a link about Google
      Analytics) and duplicated the button sitting next to it. */}}
 {{ $thirdParty := i18n "consent.prompt.thirdParty" }}
-<div id="consent-notice" class="fixed bottom-0 w-100 z-9999 dn">
+{{/* A landmark with a name: without one, axe reports the bar's text as page
+     content outside any region, and screen-reader users get no way to jump to
+     it or skip past it. */}}
+<div id="consent-notice" class="fixed bottom-0 w-100 z-9999 dn" role="region" aria-label="{{ i18n "consent.settings" }}">
     <div class="consent-bar">
         <p class="consent-bar__text">{{ i18n "consent.prompt.text" (dict "thirdParty" $thirdParty) | safeHTML }}</p>
         <div class="consent-bar__actions">
@@ -12,8 +15,12 @@
         </div>
     </div>
 </div>
-<div id="consent-overlay" class="fixed top-0 left-0 w-100 h-100 vh-100 bg-black-70 z-9999 dn">
+{{/* It behaves as a modal -- it covers the page and clicking outside closes
+     it -- so it has to say so, and carry a name. */}}
+<div id="consent-overlay" class="fixed top-0 left-0 w-100 h-100 vh-100 bg-black-70 z-9999 dn"
+     role="dialog" aria-modal="true" aria-labelledby="consent-card-title">
     <div class="consent-card">
+        <h2 id="consent-card-title" class="consent-card__title">{{ i18n "consent.settings" }}</h2>
         {{ range $index, $item := .Site.Params.consent.items }}
             <div class="consent-item">
                 <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" {{ if $item.is_functional }}checked disabled{{ end }} />
@@ -85,7 +92,7 @@
         setConsentInputs(consentValue);
         createCookie('consent-settings',consentValue,CONSENT_LIFETIME_DAYS);
         document.getElementById('consent-notice').style.display = 'none';
-        document.getElementById('consent-overlay').classList.add('dn');
+        closeConsentDialog();
         var revoked = previous && previous.split('').some(function(value,index){
             return value === "1" && consentValue[index] !== "1";
         });
@@ -143,6 +150,72 @@
         el.checked = false;
     });
 
+    // The overlay covers the page and behaves as a modal, but nothing moved
+    // focus into it: a keyboard user opened the dialog and stayed behind it,
+    // tabbing through the page underneath with no way out but the mouse.
+    // Each entry is prefixed separately below: a descendant combinator binds to
+    // one selector only, so '#consent-overlay ' + the whole list would scope the
+    // first entry and leave the rest matching the entire page.
+    var FOCUSABLE = ['a[href]', 'button:not([disabled])', 'input:not([disabled])', '[tabindex]:not([tabindex="-1"])'];
+    var consentOpener = null;
+
+    function dialogIsOpen() {
+        return !document.getElementById('consent-overlay').classList.contains('dn');
+    }
+
+    function dialogFocusable() {
+        var selector = FOCUSABLE.map(function (part) {
+            return '#consent-overlay ' + part;
+        }).join(', ');
+        return Array.prototype.slice.call(
+            document.querySelectorAll(selector)
+        ).filter(function (el) {
+            // Not offsetParent: it is null for everything inside a
+            // position: fixed ancestor, which the overlay is, so that test
+            // reported the dialog as having no focusable content at all.
+            return el.getClientRects().length > 0;
+        });
+    }
+
+    function openConsentDialog() {
+        consentOpener = document.activeElement;
+        document.getElementById('consent-overlay').classList.remove('dn');
+        var first = dialogFocusable()[0];
+        if (first) first.focus();
+    }
+
+    function closeConsentDialog() {
+        var wasOpen = dialogIsOpen();
+        document.getElementById('consent-overlay').classList.add('dn');
+        // Returning focus to whatever opened the dialog; without it focus falls
+        // back to <body> and the next Tab starts from the top of the page.
+        if (wasOpen && consentOpener && document.contains(consentOpener)) {
+            consentOpener.focus();
+        }
+        consentOpener = null;
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (!dialogIsOpen()) return;
+        if (event.key === 'Escape') {
+            closeConsentDialog();
+            return;
+        }
+        if (event.key !== 'Tab') return;
+        // Keep Tab inside the dialog while it is modal.
+        var items = dialogFocusable();
+        if (!items.length) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
+    });
+
     if(readCookie('consent-settings')) {
         var consentValue = readCookie('consent-settings').toString();
         //console.log(consentValue);
@@ -154,7 +227,7 @@
     var elements = document.querySelectorAll('.manage-consent');
     elements.forEach(function(el) {
         el.addEventListener("click",function() {
-            document.getElementById('consent-overlay').classList.toggle('dn');
+            if (dialogIsOpen()) { closeConsentDialog(); } else { openConsentDialog(); }
         });
     });
     var elements = document.querySelectorAll('.deny-consent');
@@ -175,7 +248,7 @@
     });
     document.getElementById("consent-overlay").addEventListener("click",function(e) {
         if (!document.querySelector("#consent-overlay > div").contains(e.target)){
-            this.classList.toggle('dn');
+            closeConsentDialog();
         }
     });
 </script>

@@ -5,7 +5,7 @@ draft = false
 omit_header_text = true
 +++
 
-### Handige links voor het leren van de Nederlandse taal:
+## Handige links voor het leren van de Nederlandse taal:
 
 - Chatbot voor het leren van voorzetsels bij werkwoorden
     - <a href="https://t.me/YaVchuDutchPrepositiesTrainerBot" target="_blank">Telegram</a>

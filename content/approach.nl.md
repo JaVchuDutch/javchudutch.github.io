@@ -13,7 +13,7 @@ omit_header_text = true
 
 **Spreken boven grammatica.** Mijn lessen gaan niet alleen over grammatica, maar over echt contact in het echte leven.
 
-### Dit is iets voor je als
+## Dit is iets voor je als
 
 - je Nederlands vanaf nul wilt leren;
 - je je voorbereidt op het inburgeringsexamen of het Staatsexamen NT2;
@@ -22,7 +22,7 @@ omit_header_text = true
 - je individueel of in een minigroep wilt werken;
 - je een conversatiegroep zoekt om te oefenen.
 
-### Vormen
+## Vormen
 
 Individueel, in een minigroep of in een conversatiegroep om te oefenen.
 

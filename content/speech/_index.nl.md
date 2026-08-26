@@ -6,4 +6,4 @@ omit_header_text = true
 aliases = ['/resources/speech']
 +++
 
-### De onderstaande pagina's bevatten audiofragmenten per zin, die je kunt gebruiken om je spreekvaardigheid te oefenen.
+De onderstaande pagina's bevatten audiofragmenten per zin, die je kunt gebruiken om je spreekvaardigheid te oefenen.

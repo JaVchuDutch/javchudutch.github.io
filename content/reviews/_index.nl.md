@@ -30,7 +30,7 @@ omit_header_text = true
 # '''
 +++
 
-### Wat mijn cursisten zeggen
+## Wat mijn cursisten zeggen
 
 Alle ervaringen hieronder zijn achtergelaten op externe platforms — klik op de link onder elke ervaring om het origineel te zien.
 
