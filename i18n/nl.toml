@@ -3,9 +3,13 @@ ariaTranslation = 'Lees in een andere taal:'
 
 reviewSource = 'Lees het origineel'
 
+themeToggle = 'Thema wisselen'
+
+consent.settings = 'Cookie-instellingen'
+
 [consent.prompt]
-text = 'We zouden graag {{ .thirdParty }} willen gebruiken om de functionaliteit van deze website te verbeteren.'
-thirdParty = 'de code van derden'
+text = 'We gebruiken {{ .thirdParty }} om bezoekersstatistieken te bekijken. Daarvoor worden er cookies in je browser opgeslagen.'
+thirdParty = 'Google Analytics'
 managePreferences = 'Beheer voorkeuren'
 deny = 'Weigeren'
 allow = 'Toestaan'

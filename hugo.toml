@@ -49,13 +49,25 @@ weight = 4
 #name = 'Відгуки'
 #pageRef = '/reviews'
 #weight = 5
+# Розкоментуйте, коли заповните ‹…› у content/privacy.uk.md
+# і приберете там draft = true.
+#[[languages.uk.menus.main]]
+#name = 'Конфіденційність'
+#pageRef = '/privacy'
+#weight = 6
 [languages.uk.params]
 [languages.uk.params.consent]
 [[languages.uk.params.consent.items]]
-title = 'Google Analytics'
-description = 'Ми використовуємо Google Analytics для збору анонімних даних про відвідувачів нашого сайту.'
+slug = 'analytics'
+title = 'Статистика відвідувань'
+description = 'Google Analytics рахує перегляди сторінок і зберігає у вашому браузері файл cookie з унікальним ідентифікатором.'
 is_functional = false
-script_file = 'ga.js'
+
+[[languages.uk.params.consent.items]]
+slug = 'advertising'
+title = 'Реклама'
+description = 'Дозволяє пов’язувати ваш візит з рекламними кампаніями Google і показувати рекламу цього сайту. Окремо від статистики.'
+is_functional = false
 
 [languages.nl]
 disabled = false
@@ -86,11 +98,23 @@ weight = 4
 #name = 'Ervaringen'
 #pageRef = '/reviews'
 #weight = 5
+# Uit commentaar halen zodra de ‹…› in content/privacy.nl.md zijn ingevuld
+# en draft = true daar weg is.
+#[[languages.nl.menus.main]]
+#name = 'Privacy'
+#pageRef = '/privacy'
+#weight = 6
 [[languages.nl.params.consent.items]]
-title = 'Google Analytics'
-description = 'We gebruiken Google Analytics om anonieme gegevens over bezoekers van onze site te verzamelen.'
+slug = 'analytics'
+title = 'Bezoekersstatistieken'
+description = 'Google Analytics telt paginaweergaven en slaat een cookie met een unieke identificatie in je browser op.'
 is_functional = false
-script_file = 'ga.js'
+
+[[languages.nl.params.consent.items]]
+slug = 'advertising'
+title = 'Advertenties'
+description = 'Maakt het mogelijk je bezoek te koppelen aan Google-advertentiecampagnes en advertenties voor deze site te tonen. Los van de statistieken.'
+is_functional = false
 
 [params]
 site_logo = "images/logo.jpg"
@@ -146,10 +170,16 @@ sharetext = true
 networks = ["facebook", "email"]
 
 [[params.consent.items]]
-title = 'Google Analytics'
-description = 'We use Google Analytics to collect anonymous data about visitors to our site.'
+slug = 'analytics'
+title = 'Visitor statistics'
+description = 'Google Analytics counts page views and stores a cookie with a unique identifier in your browser.'
 is_functional = false
-script_file = 'ga.js'
+
+[[params.consent.items]]
+slug = 'advertising'
+title = 'Advertising'
+description = 'Allows your visit to be linked to Google advertising campaigns and ads for this site to be shown. Separate from statistics.'
+is_functional = false
 
 [markup.goldmark.renderer]
 unsafe = true

@@ -1,0 +1,5 @@
+{{/* The consent notice is markup, so it must not be emitted from a head
+     partial: a <div> inside <head> makes the parser close the head and open an
+     implicit body, and the real <body class="..."> that follows loses its
+     classes — which silently broke every style keyed off them. */}}
+{{ partial "consent.html" . }}

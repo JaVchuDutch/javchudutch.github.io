@@ -3,9 +3,13 @@ ariaTranslation = 'Читати іншою мовою:'
 
 reviewSource = 'Читати оригінал'
 
+themeToggle = 'Перемкнути тему'
+
+consent.settings = 'Налаштування cookie'
+
 [consent.prompt]
-text = 'Ми хотіли б використовувати {{ .thirdParty }} для покращення функціональності цього веб-сайту.'
-thirdParty = 'сторонній код'
+text = 'Ми використовуємо {{ .thirdParty }}, щоб бачити статистику відвідувань. Для цього у вашому браузері зберігаються файли cookie.'
+thirdParty = 'Google Analytics'
 managePreferences = 'Управління налаштуваннями'
 deny = 'Відмовити'
 allow = 'Дозволити'

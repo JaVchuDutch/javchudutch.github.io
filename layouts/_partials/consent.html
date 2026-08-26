@@ -1,31 +1,39 @@
-{{ $thirdParty := printf "<a class=\"manage-consent black\" href=\"#manage-consent\">%s</a>" (i18n "consent.prompt.thirdParty") }}
-<div id="consent-notice" class="pa3 tc fixed bottom-0 w-100 bg-gold z-9999 dn">
-    <span class="mr3">{{ i18n "consent.prompt.text" (dict "thirdParty" $thirdParty) | safeHTML }}</span>
-    <button class="btn manage-consent pointer dib bg-gold">{{ i18n "consent.prompt.managePreferences" }}</button>
-    <button class="btn deny-consent pointer dib ml2 bg-gold">{{ i18n "consent.prompt.deny" }}</button>
-    <button class="btn approve-consent pointer dib ml2 bg-gold">{{ i18n "consent.prompt.allow" }}</button>
+{{ $thirdParty := printf "<a class=\"manage-consent\" href=\"#manage-consent\">%s</a>" (i18n "consent.prompt.thirdParty") }}
+<div id="consent-notice" class="fixed bottom-0 w-100 z-9999 dn">
+    <div class="consent-bar">
+        <p class="consent-bar__text">{{ i18n "consent.prompt.text" (dict "thirdParty" $thirdParty) | safeHTML }}</p>
+        <div class="consent-bar__actions">
+            <button class="consent-btn consent-btn--quiet manage-consent">{{ i18n "consent.prompt.managePreferences" }}</button>
+            <button class="consent-btn consent-btn--equal deny-consent">{{ i18n "consent.prompt.deny" }}</button>
+            <button class="consent-btn consent-btn--equal approve-consent">{{ i18n "consent.prompt.allow" }}</button>
+        </div>
+    </div>
 </div>
 <div id="consent-overlay" class="fixed top-0 left-0 w-100 h-100 vh-100 bg-black-70 z-9999 dn">
-    <div class="bg-white w-100 mw6 pa4 center" style="margin-top: 20%;">
+    <div class="consent-card">
         {{ range $index, $item := .Site.Params.consent.items }}
-            <div class="mb3 flex items-center">
-                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" class="mr2" {{ if $item.is_functional }}checked disabled{{ end }} />
+            <div class="consent-item">
+                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}" {{ if $item.is_functional }}checked disabled{{ end }} />
                 <label for="item{{ $index }}">
-                    <h3 class="mt0">{{ $item.title }}</h3>
-                    <p>{{ $item.description }}</p>
+                    <span class="consent-item__title">{{ $item.title }}</span>
+                    <span class="consent-item__desc">{{ $item.description }}</span>
                 </label>
             </div>
         {{ end }}
-        <div class="flex justify-end">
-            <button id="save-consent" class="btn save-consent bg-dark-gray white pointer mr2" data-consentvalue="{{ range $index, $item := .Site.Params.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">{{ i18n "consent.prompt.savePreferences" }}</button>
-            <button class="btn approve-consent bg-dark-gray white pointer">{{ i18n "consent.prompt.allowAll" }}</button>
+        <div class="consent-card__actions">
+            <button id="save-consent" class="consent-btn consent-btn--outline save-consent" data-consentvalue="{{ range $index, $item := .Site.Params.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">{{ i18n "consent.prompt.savePreferences" }}</button>
+            <button class="consent-btn consent-btn--primary approve-consent">{{ i18n "consent.prompt.allowAll" }}</button>
         </div>
     </div>
 </div>
 <script>
 
-    const scripts = [];{{ range $index, $item := (where .Site.Params.consent.items "is_functional" false) }}
-    scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
+    // Six months is the usual re-ask interval for cookie consent in the EU;
+    // the previous 31 days brought the banner back every month.
+    const CONSENT_LIFETIME_DAYS = 180;
+
+    // Each consent item is one bit of the stored string, in this order.
+    const CONSENT_SLUGS = [{{ range $index, $item := (where .Site.Params.consent.items "is_functional" false) }}{{ if $index }}, {{ end }}"{{ $item.slug }}"{{ end }}];
 
     function createCookie(name,value,days) {
         var expires = "";
@@ -59,23 +67,15 @@
         });
     }
     function denyAllConsentScripts() {
-        var consentValue = "";
-        scripts.forEach(function(){
-            consentValue = consentValue + "0";
-        });
-        acceptSomeConsentScripts(consentValue);
+        acceptSomeConsentScripts(CONSENT_SLUGS.map(function(){ return "0"; }).join(""));
     }
     function acceptAllConsentScripts() {
-        var consentValue = "";
-        scripts.forEach(function(){
-            consentValue = consentValue + "1";
-        });
-        acceptSomeConsentScripts(consentValue);
+        acceptSomeConsentScripts(CONSENT_SLUGS.map(function(){ return "1"; }).join(""));
     }
     function acceptSomeConsentScripts(consentValue) {
         var previous = readCookie('consent-settings');
         setConsentInputs(consentValue);
-        createCookie('consent-settings',consentValue,31);
+        createCookie('consent-settings',consentValue,CONSENT_LIFETIME_DAYS);
         document.getElementById('consent-notice').style.display = 'none';
         document.body.classList.remove('has-consent-notice');
         document.getElementById('consent-overlay').classList.add('dn');
@@ -91,16 +91,28 @@
         }
         loadConsentScripts(consentValue);
     }
-    function loadConsentScripts(consentValue) {
-        scripts.forEach(function(value,key){
-            //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
-            if(consentValue[key]=="1") {
-                var s = document.createElement('script');
-                s.type = 'text/javascript';
-                s.src = value;
-                document.body.appendChild(s);
-            }
+    // Analytics and advertising are separate purposes with separate consent, so
+    // the choice is published as a state object rather than as "load this file".
+    // ga.js reads it and translates it into Google Consent Mode signals.
+    function consentState(consentValue) {
+        var state = {};
+        CONSENT_SLUGS.forEach(function(slug, index){
+            state[slug] = consentValue[index] === "1";
         });
+        return state;
+    }
+    function loadConsentScripts(consentValue) {
+        var state = consentState(consentValue);
+        window.jvdConsent = state;
+        // Nothing is requested from Google until at least one purpose is granted:
+        // stricter than plain Consent Mode, which loads the tag regardless and
+        // pings before the visitor has decided anything.
+        if (!state.analytics && !state.advertising) return;
+        if (document.getElementById('gtag-loader')) return;
+        var s = document.createElement('script');
+        s.id = 'gtag-loader';
+        s.src = '/js/ga.js';
+        document.body.appendChild(s);
     }
     function setConsentInputs(consentValue) {
         var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');

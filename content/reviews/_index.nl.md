@@ -22,7 +22,7 @@ omit_header_text = true
 
 # [[reviews]]
 # name = 'Naam'
-# context = 'Voorbereiding NT2, Programma II'
+# context = 'Voorbereiding NT2 Programma I, niveau B1'
 # source = 'Facebook'
 # url = 'https://www.facebook.com/javchudutch/reviews'
 # text = '''
