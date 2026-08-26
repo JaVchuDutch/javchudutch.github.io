@@ -15,12 +15,4 @@ Ik bereid cursisten voor op de inburgering op niveau A2 en B1, en op het Staatse
 
 Ik ben gediplomeerd docent NT2: Opleiding Docent NT2 aan de Vrije Universiteit Amsterdam (VU).
 
-### Hoe ik werk
-
-**Empathie en begrip.** Ik haast me niet, ik oordeel niet en ik leg zo vaak uit als nodig is. Ik weet hoe moeilijk het is om bij nul te beginnen.
-
-**Aandacht voor jouw wensen.** Ik zie waar het schuurt en pas elke les persoonlijk aan.
-
-**Spreken boven grammatica.** Mijn lessen gaan niet alleen over grammatica, maar over echt contact in het echte leven.
-
-Je kunt individueel werken, in een minigroep of in een conversatiegroep om te oefenen.
+Over mijn principes, de lesvormen en voor wie ze bedoeld zijn lees je op [Hoe ik werk](/nl/approach/).

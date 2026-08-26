@@ -43,16 +43,20 @@ name = 'Про мене'
 pageRef = '/about'
 weight = 3
 [[languages.uk.menus.main]]
+name = 'Як я працюю'
+pageRef = '/approach'
+weight = 4
+[[languages.uk.menus.main]]
 name = 'Контакт'
 pageRef = '/contact'
-weight = 4
+weight = 5
 # Розкоментуйте, коли на сторінці /reviews з'являться справжні відгуки
 # і буде прибрано draft = true у content/reviews/_index.uk.md.
 # Змініть weight, щоб посунути пункт у потрібне місце меню.
 #[[languages.uk.menus.main]]
 #name = 'Відгуки'
 #pageRef = '/reviews'
-#weight = 5
+#weight = 7
 [[languages.uk.menus.main]]
 name = 'Конфіденційність'
 pageRef = '/privacy'
@@ -91,15 +95,19 @@ name = 'Over mij'
 pageRef = '/about'
 weight = 3
 [[languages.nl.menus.main]]
+name = 'Hoe ik werk'
+pageRef = '/approach'
+weight = 4
+[[languages.nl.menus.main]]
 name = 'Contact'
 pageRef = '/contact'
-weight = 4
+weight = 5
 # Haal uit commentaar zodra er echte ervaringen op /reviews staan
 # en draft = true uit content/reviews/_index.nl.md is verwijderd.
 #[[languages.nl.menus.main]]
 #name = 'Ervaringen'
 #pageRef = '/reviews'
-#weight = 5
+#weight = 7
 [[languages.nl.menus.main]]
 name = 'Privacy'
 pageRef = '/privacy'
