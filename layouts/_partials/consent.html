@@ -1,4 +1,7 @@
-{{ $thirdParty := printf "<a class=\"manage-consent\" href=\"#manage-consent\">%s</a>" (i18n "consent.prompt.thirdParty") }}
+{{/* The service name is plain text. It used to be a link that opened the
+     preferences dialog, which both misled (it looks like a link about Google
+     Analytics) and duplicated the button sitting next to it. */}}
+{{ $thirdParty := i18n "consent.prompt.thirdParty" }}
 <div id="consent-notice" class="fixed bottom-0 w-100 z-9999 dn">
     <div class="consent-bar">
         <p class="consent-bar__text">{{ i18n "consent.prompt.text" (dict "thirdParty" $thirdParty) | safeHTML }}</p>

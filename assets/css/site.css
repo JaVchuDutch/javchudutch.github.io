@@ -204,8 +204,6 @@ body.has-consent-notice { padding-bottom: 8rem; }
   line-height: 1.5;
 }
 
-.consent-bar__text a { color: var(--accent); }
-
 .consent-bar__actions {
   display: flex;
   flex-wrap: wrap;
