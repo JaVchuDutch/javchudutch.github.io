@@ -21,9 +21,8 @@ filename = "sitemap.xml"
 
 [languages.uk]
 disabled = false
-languageCode = 'uk'
-languageDirection = ''
-languageName = 'Українська'
+locale = 'uk'
+label = 'Українська'
 weight = 0
 title = 'Ja Vchu Dutch - вчимо нідерландську мову разом'
 [languages.uk.menus]
@@ -43,21 +42,27 @@ weight = 3
 name = 'Контакт'
 pageRef = '/contact'
 weight = 4
+# Розкоментуйте, коли на сторінці /reviews з'являться справжні відгуки
+# і буде прибрано draft = true у content/reviews/_index.uk.md.
+# Змініть weight, щоб посунути пункт у потрібне місце меню.
+#[[languages.uk.menus.main]]
+#name = 'Відгуки'
+#pageRef = '/reviews'
+#weight = 5
 [languages.uk.params]
 [languages.uk.params.consent]
 [[languages.uk.params.consent.items]]
-title = 'Google Anaytics'
+title = 'Google Analytics'
 description = 'Ми використовуємо Google Analytics для збору анонімних даних про відвідувачів нашого сайту.'
 is_functional = false
 script_file = 'ga.js'
 
 [languages.nl]
 disabled = false
-languageCode = 'nl'
-languageDirection = ''
-languageName = 'Nederlands'
+locale = 'nl'
+label = 'Nederlands'
 weight = 1
-title = 'Ja Vchu Dutch - Leren Nederlands samen'
+title = 'Ja Vchu Dutch - Samen Nederlands leren'
 [languages.nl.menus]
 [[languages.nl.menus.main]]
 name = 'Publicaties'
@@ -75,8 +80,14 @@ weight = 3
 name = 'Contact'
 pageRef = '/contact'
 weight = 4
+# Haal uit commentaar zodra er echte ervaringen op /reviews staan
+# en draft = true uit content/reviews/_index.nl.md is verwijderd.
+#[[languages.nl.menus.main]]
+#name = 'Ervaringen'
+#pageRef = '/reviews'
+#weight = 5
 [[languages.nl.params.consent.items]]
-title = 'Google Anaytics'
+title = 'Google Analytics'
 description = 'We gebruiken Google Analytics om anonieme gegevens over bezoekers van onze site te verzamelen.'
 is_functional = false
 script_file = 'ga.js'
@@ -99,55 +110,45 @@ username = 'info@javchudutch.com'
 [params.ananke.social.buymeacoffee]
 username = 'javchudutch'
 
-[[params.ananke.social.networks]]
-slug = "email"
-label = "Email"
-icon = "envelope"     # font awesome free icon name
+# ananke >= 2.11 keys networks by slug instead of using an array of tables,
+# and ships definitions for email/facebook/instagram itself. Only the two
+# deviations we actually need are declared here.
+
+# The theme sets profile = false for email; we do want a mailto: follow link.
+[params.ananke.social.networks.email]
 profile = "mailto:%s"
-link = "mailto:"
-[params.ananke.social.networks.particles]
-body = "permalink"
-subject = "title"
 
-[[params.ananke.social.networks]]
-slug = "facebook"
-label = "Facebook"
-color = "#3b5998"
-profile = "https://www.facebook.com/%s"
-icon = "facebook"                               # font awesome brand icon name
-link = "https://facebook.com/sharer/sharer.php"
-[params.ananke.social.networks.particles]
-u = "permalink"
-
-[[params.ananke.social.networks]]
-slug = "instagram"
-label = "Instagram"
-color = "#e1306c"
-profile = "https://www.instagram.com/%s/"
-icon = "instagram"                        # font awesome brand icon name
-
-[[params.ananke.social.networks]]
+# Not shipped by the theme; icon lives in assets/ananke/socials/buymeacoffee.svg
+[params.ananke.social.networks.buymeacoffee]
 slug = "buymeacoffee"
 label = "Buy me a coffee"
 color = "#f5d607"
 profile = "https://buymeacoffee.com/%s"
-icon = "buymeacoffee"                   # font awesome brand icon name
+icon = "buymeacoffee"
 share = false
 
 [params.ananke.social.follow]
 new_window_icon = false
 networks = ["facebook", "instagram", "email", "buymeacoffee"]
 
+# Only networks with a real share endpoint belong here. Instagram and
+# Buy me a coffee have none and used to render broken "%!s(<nil>)" links.
 [params.ananke.social.share]
 icons = true
 sharetext = true
-networks = ["facebook", "instagram", "email", "buymeacoffee"]
+networks = ["facebook", "email"]
 
 [[params.consent.items]]
-title = 'Google Anaytics'
+title = 'Google Analytics'
 description = 'We use Google Analytics to collect anonymous data about visitors to our site.'
 is_functional = false
 script_file = 'ga.js'
 
 [markup.goldmark.renderer]
 unsafe = true
+
+# Newer Hugo refuses raw HTML files as content by default
+# (security.allowContent = ['! ^text/html$']). The whole /speech section is
+# built from such files, so the policy is opened up again here.
+[security]
+allowContent = ['.']

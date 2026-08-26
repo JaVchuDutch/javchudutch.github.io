@@ -1,8 +1,8 @@
 {{ if .IsTranslated }}
-<ul aria-label="{{ i18n "translations" }}" class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+<ul aria-label="{{ i18n "translations" }}" class="{{ cond (eq $.Site.Language.Direction "rtl") "pr0 ml3" "pl0 mr3" }}">
     {{ range .Translations }}
-    <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
-        <a aria-label="{{ i18n "ariaTranslation" }} {{ .Language.LanguageName }}" class="hover-white no-underline white-90" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+    <li class="list f5 f4-ns fw4 dib {{ cond (eq $.Site.Language.Direction "rtl") "pl3" "pr3" }}">
+        <a aria-label="{{ i18n "ariaTranslation" }} {{ .Language.Label }}" class="hover-white no-underline white-90" href="{{ .RelPermalink }}">{{ .Language.Label }}</a>
     </li>
     {{ end}}
 </ul>

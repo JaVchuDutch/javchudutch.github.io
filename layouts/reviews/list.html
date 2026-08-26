@@ -1,0 +1,32 @@
+{{ define "main" }}
+  <article class="pa3 pa4-ns nested-copy-line-height">
+    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
+      {{ .Content }}
+    </section>
+
+    {{/* Each review is one [[reviews]] entry in this page's front matter.
+         `url` must point at the original on the platform where it was left:
+         the page only quotes, the reader verifies at the source. */}}
+    <section class="flex flex-wrap justify-center mw8 center ph3">
+      {{ range .Params.reviews }}
+        {{ $review := . }}
+        <figure class="w-100 w-45-l ma2 pa4 bg-white shadow-4 flex flex-column justify-between">
+          <blockquote class="ma0 f5 lh-copy mid-gray">
+            {{ .text | markdownify }}
+          </blockquote>
+          <figcaption class="mt3 pt3 bt b--light-gray f6 gray">
+            <span class="fw6 near-black">{{ .name }}</span>
+            {{ with .context }}<br>{{ . }}{{ end }}
+            {{ with $review.url }}
+              <br>
+              <a href="{{ . }}" class="link mid-gray dim underline"
+                 target="_blank" rel="nofollow noopener noreferrer">
+                {{ $review.source | default (i18n "reviewSource") }}
+              </a>
+            {{ end }}
+          </figcaption>
+        </figure>
+      {{ end }}
+    </section>
+  </article>
+{{ end }}
