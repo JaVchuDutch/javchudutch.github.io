@@ -120,8 +120,11 @@ is_functional = false
 site_logo = "images/logo.jpg"
 favicon = "img/favicon/favicon.ico"
 mainSections = ["posts"]
-# First year of publication; the footer prints a range ending at the build year.
-copyright_start_year = 2021
+# First year the site itself was published (first commit, 2024-10-02); the
+# footer prints a range ending at the build year. Not the year the business or
+# the teaching started -- that belongs in the About text, not in a copyright
+# notice, which covers this site's own content.
+copyright_start_year = 2024
 # Preview image for links shared on social media. Previously this came from the
 # featured_image cascade, which also stamped a full-height cover on every page.
 images = ["/img/logo.jpg"]
@@ -130,6 +133,12 @@ images = ["/img/logo.jpg"]
 # via the cascade in content/posts/_index.*.md
 [params.ananke.pages]
 show_date = false
+
+# The home page body used to be centred, which was fine for two sentences but
+# turned the intro's bullet list into a ragged column. Left-aligning is the
+# theme's own option; we no longer ship a copy of home.html to hardcode it.
+[params.ananke.home]
+content_alignment = "left"
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-black"
 recent_posts_number = 3
