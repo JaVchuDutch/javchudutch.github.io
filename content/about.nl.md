@@ -9,4 +9,4 @@ Ik ben docent Nederlands met jarenlange ervaring: ik geef les aan tieners en vol
 
 Ik bereid cursisten voor op de inburgering op niveau A2 en B1, en op het Staatsexamen NT2 Programma I op niveau B1.
 
-In 2026 rondde ik de Opleiding Docent NT2 aan de Vrije Universiteit Amsterdam (VU) af.
+Ik ben gediplomeerd docent NT2: Opleiding Docent NT2 aan de Vrije Universiteit Amsterdam (VU).

@@ -9,4 +9,4 @@ omit_header_text = true
 
 Готую до інтеграційного іспиту (inburgering) на рівнях A2 і B1 та до державного іспиту Staatsexamen NT2 Programma I на рівні B1.
 
-У 2026 році я закінчила Opleiding Docent NT2 у Vrije Universiteit Amsterdam (VU).
+Маю диплом Opleiding Docent NT2 від Vrije Universiteit Amsterdam (VU).
