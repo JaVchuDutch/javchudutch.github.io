@@ -34,7 +34,8 @@
             date.setTime(date.getTime() + (days*24*60*60*1000));
             expires = "; expires=" + date.toUTCString();
         }
-        document.cookie = name + "=" + value + expires + "; path=/";
+        var secure = location.protocol === "https:" ? "; Secure" : "";
+        document.cookie = name + "=" + value + expires + "; path=/; SameSite=Lax" + secure;
     }
     function readCookie(name) {
         var nameEQ = name + "=";
@@ -48,6 +49,14 @@
     }
     function eraseCookie(name) {
         createCookie(name,"",-1);
+        // GA sets its cookies on the registrable domain, which the call above does not match
+        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=." + location.hostname;
+    }
+    function eraseAnalyticsCookies() {
+        document.cookie.split(';').forEach(function(cookie){
+            var name = cookie.split('=')[0].trim();
+            if (name.indexOf('_ga') === 0) eraseCookie(name);
+        });
     }
     function denyAllConsentScripts() {
         var consentValue = "";
@@ -64,10 +73,22 @@
         acceptSomeConsentScripts(consentValue);
     }
     function acceptSomeConsentScripts(consentValue) {
+        var previous = readCookie('consent-settings');
         setConsentInputs(consentValue);
         createCookie('consent-settings',consentValue,31);
         document.getElementById('consent-notice').style.display = 'none';
+        document.body.classList.remove('has-consent-notice');
         document.getElementById('consent-overlay').classList.add('dn');
+        var revoked = previous && previous.split('').some(function(value,index){
+            return value === "1" && consentValue[index] !== "1";
+        });
+        if (revoked) {
+            // Already-loaded gtag keeps running until the page is rebuilt, so drop
+            // its cookies and reload rather than leaving the visitor tracked.
+            eraseAnalyticsCookies();
+            window.location.reload();
+            return;
+        }
         loadConsentScripts(consentValue);
     }
     function loadConsentScripts(consentValue) {
@@ -110,6 +131,7 @@
         loadConsentScripts(consentValue);
     } else {
         document.getElementById('consent-notice').style.display = 'block';
+        document.body.classList.add('has-consent-notice');
     }
     var elements = document.querySelectorAll('.manage-consent');
     elements.forEach(function(el) {
