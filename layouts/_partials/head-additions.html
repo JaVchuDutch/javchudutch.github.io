@@ -14,6 +14,10 @@
         document.documentElement.setAttribute('data-theme', stored);
       }
     } catch (e) {}
+    // Marks that scripting is available, so the stylesheet may collapse the
+    // mobile menu. Set here rather than on load so the panel never flashes
+    // open, and absent entirely without JS, where the button would be dead.
+    document.documentElement.classList.add('js');
   })();
 
   // Delegated, so it works regardless of where the button ends up in the header.
@@ -28,5 +32,21 @@
     var next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // Same delegation as above: the header markup is the theme's, so nothing
+  // here depends on where the button sits.
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest && event.target.closest('.nav-toggle');
+    if (!button) return;
+    var nav = button.closest('nav');
+    if (!nav) return;
+    var open = nav.hasAttribute('data-nav-open');
+    if (open) {
+      nav.removeAttribute('data-nav-open');
+    } else {
+      nav.setAttribute('data-nav-open', '');
+    }
+    button.setAttribute('aria-expanded', open ? 'false' : 'true');
   });
 </script>

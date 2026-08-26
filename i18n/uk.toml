@@ -5,6 +5,8 @@ reviewSource = 'Читати оригінал'
 
 themeToggle = 'Перемкнути тему'
 
+menu = 'Меню'
+
 consent.settings = 'Налаштування cookie'
 
 consent.privacy = 'Докладніше — у політиці конфіденційності'
@@ -17,3 +19,9 @@ deny = 'Відмовити'
 allow = 'Дозволити'
 allowAll = 'Дозволити все'
 savePreferences = 'Зберегти налаштування'
+
+# ananke's own uk translation renders as "Ресурси сторінки", which reads as
+# "pages of Resources" rather than "the Resources page". Only the title
+# attribute on menu links uses it.
+[pageTitle]
+other = 'Сторінка «{{ .Name }}»'

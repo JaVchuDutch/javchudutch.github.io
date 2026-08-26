@@ -24,7 +24,7 @@ content files by default, which would kill the whole `speech` section, so `hugo.
 The build is warning-free — if a Hugo or theme bump reintroduces deprecation warnings, fix them rather than let them
 accumulate. `public/` and `resources/` are gitignored.
 
-Project templates use Hugo's current layout structure (`layouts/_partials/`, `layouts/_shortcodes/`, `layouts/home.html`),
+Project templates use Hugo's current layout structure (`layouts/_partials/`, `layouts/_shortcodes/`, `layouts/baseof.html`),
 matching ananke v2.19. The pre-0.146 spellings (`partials/`, `shortcodes/`, `index.html`) still resolve, but don't
 reintroduce them.
 
@@ -71,9 +71,29 @@ Never invent testimonial text.
 
 Local `layouts/` and `assets/` mirror the theme's paths and win over `themes/ananke/`:
 
-- `layouts/partials/head-additions.html` is ananke's designated hook; here it pulls in `consent.html`.
+- `layouts/_partials/head-additions.html` is ananke's designated hook; here it carries the stylesheet,
+  the pre-paint theme script and the delegated click handlers for the theme and menu toggles.
 - `assets/ananke/socials/buymeacoffee.svg` supplies an icon ananke does not ship, paired with a
   `[params.ananke.social.networks.buymeacoffee]` entry in `hugo.toml`.
+
+**`layouts/_partials/site-navigation.html` is a fork and has to be re-merged by hand on every theme bump.**
+Upstream changes to it will not reach the site by themselves. What we add on top of ananke's version:
+
+1. the logo goes through `resources.Get` + `Process "resize 264x"` and carries `.site-logo`, instead of the
+   theme's raw `<img class="w100 mw5-ns">`;
+2. an ancestor trail (`where .Ancestors "Section" .Section`), with `.IsHome` skipped;
+3. menu entries whose `pageRef` is an empty section are hidden unless that section sets `show_when_empty`;
+4. the theme toggle button;
+5. the `.nav-bar` wrapper and `.nav-toggle` hamburger, plus `.nav-panel` on the block the theme leaves
+   unclassed — ananke ships no mobile menu of any kind, so below 60em its header simply stacks.
+
+Same applies to `layouts/_partials/site-footer.html`: it inlines the consent-settings button and the
+`menus.footer` links on the copyright line, and drops the theme's `dn dib-ns`, which hid that whole block —
+and with it the only route to withdrawing cookie consent — below 30em.
+
+Do **not** re-add `layouts/home.html`. A stale pre-2.11 copy of it lived here and silently shadowed the
+theme's current one, hardcoding centred body text; `[params.ananke.home] content_alignment` covers what it
+was there for.
 
 Ananke keys `social.networks` **by slug** (a map), not as an array of tables, and ships definitions for most networks
 itself — so only genuine deviations belong in `hugo.toml`: the `buymeacoffee` network, and an `email` override because
@@ -82,7 +102,7 @@ Instagram and Buy me a coffee have none and render broken `%!s(<nil>)` URLs if l
 
 ## Cookie consent + analytics
 
-`layouts/partials/consent.html` is a hand-rolled consent gate. Scripts listed in `params.consent.items` with
+`layouts/_partials/consent.html` is a hand-rolled consent gate. Scripts listed in `params.consent.items` with
 `is_functional = false` are **not** loaded until the visitor accepts; choices are stored in a `consent-settings`
 cookie whose value is a bit-per-item string, in item order. Each item's `script_file` resolves to `/js/<file>`
 (`static/js/ga.js` for GA4, which additionally honours Do Not Track).

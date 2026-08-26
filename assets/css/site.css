@@ -331,14 +331,69 @@ body > main { flex: 1 0 auto; }
   }
 }
 
+/* ---- mobile navigation --------------------------------------------------- */
+
+/* Logo on the left, hamburger on the right. Above the theme's -l breakpoint
+   this is just the logo, so the row collapses to it. */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: .25rem;
+  cursor: pointer;
+  line-height: 0;
+  opacity: .9;
+}
+
+.nav-toggle:hover { opacity: 1; }
+.nav-toggle:focus { outline: none; }
+.nav-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.nav-toggle svg {
+  width: 2rem;
+  height: 2rem;
+  fill: currentColor;
+}
+
+.nav-toggle .icon-close { display: none; }
+
 @media (max-width: 60em) {
-  /* The header stacks on narrow screens and left the toggle alone on its own
-     line; keeping it in the same wrapping row as the icons reads as one group. */
-  nav[role="navigation"] > div > div {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    row-gap: .5rem;
+  .nav-toggle { display: inline-block; }
+
+  /* Collapsed only when scripting is present. Without it the button could
+     never be pressed and the menu is the only way around the site, so the
+     no-JS fallback stays the theme's own stacked header. The .js class is set
+     on <html> before first paint, so the panel never flashes open. */
+  .js .nav-panel { display: none; }
+  .js nav[data-nav-open] .nav-panel { display: block; }
+  .js nav[data-nav-open] .nav-toggle .icon-bars { display: none; }
+  .js nav[data-nav-open] .nav-toggle .icon-close { display: inline; }
+
+  /* The theme lays menu items out as inline-block with a right padding, which
+     wraps into ragged half-rows once there are five of them. In the panel each
+     item gets its own line and one rhythm. */
+  .nav-panel { padding-top: .75rem; }
+  .nav-panel ul { margin: 0; }
+  .nav-panel li { display: block; padding: 0; }
+  .nav-panel li a { display: block; padding: .5rem 0; }
+  /* Theme toggle and the social row are block-level siblings and landed on
+     two lines. Making both inline-level puts them back on one. */
+  .nav-panel .theme-toggle {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+
+  .nav-panel .ananke-socials {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 1.1rem;
   }
 }
 
@@ -374,5 +429,23 @@ body > main { flex: 1 0 auto; }
     width: 60%;
     max-width: 220px;
     margin: 0 auto 1.25rem;
+  }
+}
+
+/* ---- footer on narrow screens ------------------------------------------- */
+
+/* With the meta block no longer hidden below 30em, the footer's flex row has
+   two things to fit; let them stack rather than squeeze. */
+@media (max-width: 30rem) {
+  footer[role="contentinfo"] > div {
+    flex-wrap: wrap;
+    gap: .75rem;
+    justify-content: center;
+  }
+
+  .footer-meta {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
   }
 }

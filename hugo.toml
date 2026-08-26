@@ -57,10 +57,12 @@ weight = 5
 #name = 'Відгуки'
 #pageRef = '/reviews'
 #weight = 7
-[[languages.uk.menus.main]]
+# Privacy belongs in the footer, not in the top menu: it is a page people look
+# for deliberately, and it was crowding a menu that has to fit on a phone.
+[[languages.uk.menus.footer]]
 name = 'Конфіденційність'
 pageRef = '/privacy'
-weight = 6
+weight = 1
 [languages.uk.params]
 [languages.uk.params.consent]
 [[languages.uk.params.consent.items]]
@@ -108,10 +110,10 @@ weight = 5
 #name = 'Ervaringen'
 #pageRef = '/reviews'
 #weight = 7
-[[languages.nl.menus.main]]
+[[languages.nl.menus.footer]]
 name = 'Privacy'
 pageRef = '/privacy'
-weight = 6
+weight = 1
 [[languages.nl.params.consent.items]]
 slug = 'analytics'
 title = 'Bezoekersstatistieken'

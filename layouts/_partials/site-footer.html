@@ -10,10 +10,18 @@
 {{- $years := cond (ge $from $to) (printf "%d" $from) (printf "%d–%d" $from $to) -}}
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between items-center">
-    <div class="dn dib-ns pv2 ph3">
+    {{/* The theme hides this block below 30em (dn dib-ns). That also hid the
+         only way to withdraw cookie consent once the banner is gone, which on
+         a phone left no route back at all. It stays visible. */}}
+    <div class="footer-meta dib pv2 ph3">
       <a class="f4 fw4 hover-white white-70 no-underline" href="{{ .Site.Home.Permalink }}">
         &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ $years }} {{ end }}
       </a>
+      {{/* Privacy sits here rather than in the top menu: it is looked for
+           deliberately, and the main menu has to fit on a phone. */}}
+      {{ range .Site.Menus.footer }}
+        <a class="consent-reopen" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
       <button type="button" class="manage-consent consent-reopen">{{ i18n "consent.settings" }}</button>
     </div>
     <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
