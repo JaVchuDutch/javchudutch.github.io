@@ -1,7 +1,32 @@
 <meta name="author" content="Ja Vchu Dutch">
+<meta name="color-scheme" content="light dark">
 {{ with resources.Get "css/site.css" }}
   {{ $css := . | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ end }}
-<meta name="color-scheme" content="light dark">
-{{ partial "consent.html" . }}
+<script>
+  // Applied before first paint, otherwise a visitor who chose dark gets a
+  // flash of the light page on every navigation.
+  (function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      if (stored === 'dark' || stored === 'light') {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+    } catch (e) {}
+  })();
+
+  // Delegated, so it works regardless of where the button ends up in the header.
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest && event.target.closest('.theme-toggle');
+    if (!button) return;
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    if (!current) {
+      current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
