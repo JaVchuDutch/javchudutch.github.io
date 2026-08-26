@@ -116,6 +116,8 @@ is_functional = false
 site_logo = "images/logo.jpg"
 favicon = "img/favicon/favicon.ico"
 mainSections = ["posts"]
+# First year of publication; the footer prints a range ending at the build year.
+copyright_start_year = 2021
 # Preview image for links shared on social media. Previously this came from the
 # featured_image cascade, which also stamped a full-height cover on every page.
 images = ["/img/logo.jpg"]

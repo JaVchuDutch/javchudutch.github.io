@@ -1,11 +1,18 @@
 {{/* Same as the theme's, with the consent link tucked next to the copyright.
      It used to sit in a band of its own under the footer, which added half
      again to the footer's height for a single line of small text. */}}
+{{- $from := site.Params.copyright_start_year | default 2021 -}}
+{{- $to := int (now.Format "2006") -}}
+{{/* The end year comes from build time, so a stale build shows a stale year --
+     .github/workflows/hugo.yml rebuilds on a schedule to keep it current.
+     The range collapses to a single year if the site is ever rebuilt with a
+     start year that has not been reached yet. */}}
+{{- $years := cond (ge $from $to) (printf "%d" $from) (printf "%d–%d" $from $to) -}}
 <footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between items-center">
     <div class="dn dib-ns pv2 ph3">
       <a class="f4 fw4 hover-white white-70 no-underline" href="{{ .Site.Home.Permalink }}">
-        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006"}} {{ end }}
+        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ $years }} {{ end }}
       </a>
       <button type="button" class="manage-consent consent-reopen">{{ i18n "consent.settings" }}</button>
     </div>

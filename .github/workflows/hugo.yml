@@ -9,6 +9,15 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # The footer's copyright range ends at the build year, so the site has to be
+  # rebuilt after New Year or it keeps showing the old one. This runs monthly
+  # rather than once on 1 January: GitHub disables scheduled workflows in a
+  # repository with no activity for 60 days, and a yearly cron would make the
+  # single run we depend on the one most likely to be skipped. A monthly build
+  # costs ~2 minutes and the January run is what actually flips the year.
+  schedule:
+    - cron: "0 4 1 * *"
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
