@@ -85,7 +85,6 @@
         setConsentInputs(consentValue);
         createCookie('consent-settings',consentValue,CONSENT_LIFETIME_DAYS);
         document.getElementById('consent-notice').style.display = 'none';
-        document.body.classList.remove('has-consent-notice');
         document.getElementById('consent-overlay').classList.add('dn');
         var revoked = previous && previous.split('').some(function(value,index){
             return value === "1" && consentValue[index] !== "1";
@@ -151,7 +150,6 @@
         loadConsentScripts(consentValue);
     } else {
         document.getElementById('consent-notice').style.display = 'block';
-        document.body.classList.add('has-consent-notice');
     }
     var elements = document.querySelectorAll('.manage-consent');
     elements.forEach(function(el) {

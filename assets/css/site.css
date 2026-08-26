@@ -71,6 +71,11 @@
 
 .theme-toggle:hover { opacity: 1; }
 
+/* Clicking left a focus ring sitting on the icon. Keyboard users still get
+   one; mouse users do not. */
+.theme-toggle:focus { outline: none; }
+.theme-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
 /* Matches the box the social icons occupy, so the row keeps one rhythm. */
 .theme-toggle svg {
   width: 2rem;
@@ -137,9 +142,10 @@ main.pb7 { padding-bottom: 4rem; }
 body { display: flex; flex-direction: column; min-height: 100vh; }
 body > main { flex: 1 0 auto; }
 
-/* The consent notice is position: fixed and would otherwise sit on top of the
-   footer. The class is toggled alongside the notice in consent.html. */
-body.has-consent-notice { padding-bottom: 8rem; }
+/* No space is reserved for the notice. Reserving it left a strip of page
+   background between the footer and the card, which made the footer look like
+   it was floating. The card simply overlays the bottom of the page instead,
+   and the footer is whole again the moment a choice is made. */
 
 /* ---- social icon rows -------------------------------------------------- */
 
