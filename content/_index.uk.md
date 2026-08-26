@@ -2,7 +2,6 @@
 title = 'Вчимо нідерландську мову разом'
 date = 2024-10-02T17:42:29+02:00
 draft = false
-[cascade]
 featured_image = '/img/logo.jpg'
 +++
 

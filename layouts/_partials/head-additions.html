@@ -1,1 +1,7 @@
+<meta name="author" content="Ja Vchu Dutch">
+{{ with resources.Get "css/site.css" }}
+  {{ $css := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}
+<meta name="color-scheme" content="light dark">
 {{ partial "consent.html" . }}

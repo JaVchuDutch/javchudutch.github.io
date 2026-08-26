@@ -95,8 +95,15 @@ script_file = 'ga.js'
 [params]
 site_logo = "images/logo.jpg"
 favicon = "img/favicon/favicon.ico"
-author = "Ja Vchu Dutch"
 mainSections = ["posts"]
+# Preview image for links shared on social media. Previously this came from the
+# featured_image cascade, which also stamped a full-height cover on every page.
+images = ["/img/logo.jpg"]
+
+# Dates belong on blog posts, not on About/Contact/Resources. Posts opt back in
+# via the cascade in content/posts/_index.*.md
+[params.ananke.pages]
+show_date = false
 # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
 background_color_class = "bg-black"
 recent_posts_number = 3

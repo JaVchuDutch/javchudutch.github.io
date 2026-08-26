@@ -1,0 +1,100 @@
+/* Site styles layered on top of ananke.
+   The theme is built on tachyons utility classes and ships light-only, so dark
+   mode works by re-pointing the handful of colour utilities it actually uses
+   rather than by restyling every component. Keep this list in sync with what
+   the templates emit — anything not listed here keeps its light-mode colour,
+   which on a dark background usually means unreadable text. */
+
+:root {
+  --page-bg: #f4f4f4;
+  --surface: #ffffff;
+  --text: #111111;
+  --text-muted: #555555;
+  --text-faint: #777777;
+  --border: #e6e6e6;
+  --accent: #1a4fd6;
+  --header-bg: #000000;
+  --notice-bg: #ffb700;
+  --notice-text: #111111;
+  --notice-border: #111111;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #14161c;
+    --surface: #1c1f27;
+    --text: #e9eaee;
+    --text-muted: #b3b6c0;
+    --text-faint: #8f939f;
+    --border: #2b2f3a;
+    --accent: #8ab0ff;
+    --header-bg: #0a0b0f;
+    --notice-bg: #6b5822;
+    --notice-text: #fbf1d5;
+    --notice-border: #b39a4e;
+  }
+}
+
+/* ---- surfaces -------------------------------------------------------- */
+
+body.bg-near-white { background-color: var(--page-bg); }
+.bg-white { background-color: var(--surface); }
+.bg-black { background-color: var(--header-bg); }
+
+/* ---- text ------------------------------------------------------------ */
+
+.black, .near-black { color: var(--text); }
+.mid-gray, .dark-gray { color: var(--text-muted); }
+.gray { color: var(--text-faint); }
+
+/* Tachyons' .link sets color: inherit, so anchors carrying a colour utility
+   need it restated at equal specificity. */
+a.link.black, a.link.near-black { color: var(--text); }
+
+/* Links inside article bodies. */
+.nested-links a, aside.instapaper_ignoref a { color: var(--accent); }
+
+/* The theme gives article headings no colour utility, so they fall back to the
+   browser default black and vanish against a dark page. Elements lose to the
+   classes used on the hero title and footer, so those keep their own colour. */
+h1, h2, h3, h4, h5, h6 { color: var(--text); }
+
+/* ---- borders and depth ------------------------------------------------ */
+
+.b--light-gray { border-color: var(--border); }
+
+/* The theme's drop shadows read as smudges on a dark page; a hairline border
+   separates cards in both schemes. */
+.shadow-4, .shadow-5 {
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+/* ---- consent banner and dialog ---------------------------------------- */
+
+/* These carry their own background, so the global .black override above would
+   otherwise put light text on a light surface. */
+.bg-gold { background-color: var(--notice-bg); }
+.bg-gold, .bg-gold * { border-color: var(--notice-border); }
+#consent-notice,
+#consent-notice .black,
+#consent-notice a { color: var(--notice-text); }
+#consent-notice .btn { border-color: currentColor; }
+#consent-overlay { color: var(--text); }
+
+/* ---- spacing ---------------------------------------------------------- */
+
+/* pb7 leaves close to a screenful of emptiness under short pages. */
+main.pb7 { padding-bottom: 4rem; }
+
+/* ---- page frame -------------------------------------------------------- */
+
+/* Short pages left the footer floating mid-screen with a band of empty page
+   below it. The consent elements are position: fixed, so they stay out of
+   this flow. */
+body { display: flex; flex-direction: column; min-height: 100vh; }
+body > main { flex: 1 0 auto; }
+
+/* The consent notice is position: fixed and would otherwise sit on top of the
+   footer. The class is toggled alongside the notice in consent.html. */
+body.has-consent-notice { padding-bottom: 7rem; }
