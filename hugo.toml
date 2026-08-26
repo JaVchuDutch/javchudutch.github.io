@@ -49,12 +49,10 @@ weight = 4
 #name = 'Відгуки'
 #pageRef = '/reviews'
 #weight = 5
-# Розкоментуйте, коли заповните ‹…› у content/privacy.uk.md
-# і приберете там draft = true.
-#[[languages.uk.menus.main]]
-#name = 'Конфіденційність'
-#pageRef = '/privacy'
-#weight = 6
+[[languages.uk.menus.main]]
+name = 'Конфіденційність'
+pageRef = '/privacy'
+weight = 6
 [languages.uk.params]
 [languages.uk.params.consent]
 [[languages.uk.params.consent.items]]
@@ -98,12 +96,10 @@ weight = 4
 #name = 'Ervaringen'
 #pageRef = '/reviews'
 #weight = 5
-# Uit commentaar halen zodra de ‹…› in content/privacy.nl.md zijn ingevuld
-# en draft = true daar weg is.
-#[[languages.nl.menus.main]]
-#name = 'Privacy'
-#pageRef = '/privacy'
-#weight = 6
+[[languages.nl.menus.main]]
+name = 'Privacy'
+pageRef = '/privacy'
+weight = 6
 [[languages.nl.params.consent.items]]
 slug = 'analytics'
 title = 'Bezoekersstatistieken'

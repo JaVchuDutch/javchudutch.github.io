@@ -1,0 +1,67 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img "Ja Vchu Dutch - вчимо нідерландську мову разом" [ref=e7]
+        - generic [ref=e8]:
+          - list "Читати іншою мовою" [ref=e9]:
+            - listitem [ref=e10]:
+              - 'link "Читати іншою мовою: Nederlands" [ref=e11] [cursor=pointer]':
+                - /url: /nl/about/
+                - text: Nederlands
+          - list [ref=e12]:
+            - listitem [ref=e13]:
+              - link "Ресурси" [ref=e14] [cursor=pointer]:
+                - /url: /resources/
+            - listitem [ref=e15]:
+              - link "Про мене" [ref=e16] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e17]:
+              - link "Контакт" [ref=e18] [cursor=pointer]:
+                - /url: /contact/
+          - button "Перемкнути тему" [ref=e19] [cursor=pointer]
+          - generic [ref=e22]:
+            - link "follow on Facebook - Opens in a new window" [ref=e23] [cursor=pointer]:
+              - /url: https://www.facebook.com/javchudutch
+              - img "Facebook" [ref=e25]
+            - link "follow on Instagram - Opens in a new window" [ref=e27] [cursor=pointer]:
+              - /url: https://www.instagram.com/javchudutch/
+              - img "Instagram" [ref=e29]
+            - link "follow on Email - Opens in a new window" [ref=e31] [cursor=pointer]:
+              - /url: mailto:info@javchudutch.com
+            - link "follow on Buy me a coffee - Opens in a new window" [ref=e35] [cursor=pointer]:
+              - /url: https://buymeacoffee.com/javchudutch
+  - main [ref=e43]:
+    - article [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - link "Share on Facebook" [ref=e47] [cursor=pointer]:
+            - /url: https://facebook.com/sharer/sharer.php?&u=https%3A%2F%2Fjavchudutch.com%2Fabout%2F
+            - img "Facebook" [ref=e49]
+          - link "Share on Email" [ref=e51] [cursor=pointer]:
+            - /url: mailto:?&body=https%3A%2F%2Fjavchudutch.com%2Fabout%2F&subject=%D0%9F%D1%80%D0%BE+%D0%BC%D0%B5%D0%BD%D0%B5
+        - heading "Про мене" [level=1] [ref=e55]
+      - generic [ref=e56]:
+        - paragraph [ref=e57]: "Я вчителька нідерландської мови з багаторічним стажем: викладаю підліткам і дорослим, від нуля до рівня B1 (A1, A2, B1)."
+        - paragraph [ref=e58]: Готую до інтеграційного іспиту (inburgering) на рівнях A2 і B1 та до державного іспиту Staatsexamen NT2 Programma I на рівні B1.
+        - paragraph [ref=e59]: У 2026 році я закінчила Opleiding Docent NT2 у Vrije Universiteit Amsterdam (VU).
+        - list
+        - list
+  - contentinfo [ref=e60]:
+    - generic [ref=e61]:
+      - link "© Ja Vchu Dutch - вчимо нідерландську мову разом 2026" [ref=e62] [cursor=pointer]:
+        - /url: https://javchudutch.com/
+      - generic [ref=e64]:
+        - link "follow on Facebook - Opens in a new window" [ref=e65] [cursor=pointer]:
+          - /url: https://www.facebook.com/javchudutch
+          - img "Facebook" [ref=e67]
+        - link "follow on Instagram - Opens in a new window" [ref=e69] [cursor=pointer]:
+          - /url: https://www.instagram.com/javchudutch/
+          - img "Instagram" [ref=e71]
+        - link "follow on Email - Opens in a new window" [ref=e73] [cursor=pointer]:
+          - /url: mailto:info@javchudutch.com
+        - link "follow on Buy me a coffee - Opens in a new window" [ref=e77] [cursor=pointer]:
+          - /url: https://buymeacoffee.com/javchudutch
+  - button "Налаштування cookie" [ref=e86] [cursor=pointer]

@@ -1,20 +1,8 @@
 +++
 title = 'Privacyverklaring'
 date = 2026-08-26T09:00:00+02:00
-draft = true
 omit_header_text = true
 
-# IN TE VULLEN VOOR PUBLICATIE (in de tekst gemarkeerd als ‹…›):
-#   Niets - alle velden zijn ingevuld. Controleer nog wel het KvK-nummer.
-#
-# OVER HET ADRES: staat er bewust niet in. De AVG vraagt er niet expliciet om;
-# naam, KvK-nummer en e-mail volstaan. Artikel 3:15d BW vraagt commerciele
-# sites wel om een geografisch adres, dus dit is een bewuste afweging.
-#
-# Het KvK-nummer komt uit een openbaar register; controleer het op het uittreksel.
-#
-# Daarna draft = true verwijderen en het menu-item in hugo.toml uit commentaar halen.
-# Dit is een opzet, geen juridisch advies: laat het vooraf nakijken.
 +++
 
 ## Wie verwerkt je gegevens

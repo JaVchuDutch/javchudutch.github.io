@@ -337,3 +337,11 @@ body.has-consent-notice { padding-bottom: 7rem; }
     row-gap: .5rem;
   }
 }
+
+/* Consent is only "informed" if the detail is reachable from the dialog. */
+.consent-card__privacy {
+  margin: 0 0 1.25rem;
+  font-size: .85rem;
+}
+
+.consent-card__privacy a { color: var(--accent); }

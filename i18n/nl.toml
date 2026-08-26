@@ -7,6 +7,8 @@ themeToggle = 'Thema wisselen'
 
 consent.settings = 'Cookie-instellingen'
 
+consent.privacy = 'Meer hierover in de privacyverklaring'
+
 [consent.prompt]
 text = 'We gebruiken {{ .thirdParty }} om bezoekersstatistieken te bekijken. Daarvoor worden er cookies in je browser opgeslagen.'
 thirdParty = 'Google Analytics'

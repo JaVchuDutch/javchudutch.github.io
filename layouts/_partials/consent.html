@@ -20,6 +20,11 @@
                 </label>
             </div>
         {{ end }}
+        {{ with .Site.GetPage "/privacy" }}
+          <p class="consent-card__privacy">
+            <a href="{{ .RelPermalink }}">{{ i18n "consent.privacy" }}</a>
+          </p>
+        {{ end }}
         <div class="consent-card__actions">
             <button id="save-consent" class="consent-btn consent-btn--outline save-consent" data-consentvalue="{{ range $index, $item := .Site.Params.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">{{ i18n "consent.prompt.savePreferences" }}</button>
             <button class="consent-btn consent-btn--primary approve-consent">{{ i18n "consent.prompt.allowAll" }}</button>
