@@ -1,6 +1,10 @@
 baseURL = 'https://javchudutch.com/'
 
 title = 'Ja Vchu Dutch - Learn Dutch together'
+# Footer copyright. Without it the footer falls back to the full site title,
+# which is a whole sentence in each language. The brand name is the same in
+# both, so one top-level value covers uk and nl.
+copyright = 'Ja Vchu Dutch'
 theme = 'ananke'
 defaultContentLanguage = 'uk'
 enableRobotsTXT = true
