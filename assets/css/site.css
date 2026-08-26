@@ -139,7 +139,7 @@ body > main { flex: 1 0 auto; }
 
 /* The consent notice is position: fixed and would otherwise sit on top of the
    footer. The class is toggled alongside the notice in consent.html. */
-body.has-consent-notice { padding-bottom: 7rem; }
+body.has-consent-notice { padding-bottom: 8rem; }
 
 /* ---- social icon rows -------------------------------------------------- */
 
@@ -176,18 +176,24 @@ body.has-consent-notice { padding-bottom: 7rem; }
    loud, and it gave no clue which action was which. It now reads as part of
    the site and the three actions sit in a clear order of weight. */
 
+/* A detached card rather than a strip glued to the bottom edge: flush against
+   the footer it read as a second, competing panel. Floating makes it obvious
+   that it is temporary and belongs to no part of the page. */
+#consent-notice { padding: 0 1rem 1rem; }
+
 .consent-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem 1.5rem;
-  max-width: 64rem;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 1rem 1.25rem;
   background-color: var(--surface);
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -2px 16px rgba(0, 0, 0, .12);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, .3);
 }
 
 .consent-bar__text {
