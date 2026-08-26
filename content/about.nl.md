@@ -5,5 +5,6 @@ draft = false
 omit_header_text = true
 +++
 
-Ik ben een leraar Nederlands met jarenlange ervaring.
-Ik bereid voor op NT2-examens, geef les aan tieners en volwassenen.
+Ik ben docent Nederlands met jarenlange ervaring: ik geef les aan tieners en volwassenen en bereid cursisten voor op de NT2-examens.
+
+In 2026 rondde ik de Opleiding Docent NT2 aan de Vrije Universiteit Amsterdam (VU) af.

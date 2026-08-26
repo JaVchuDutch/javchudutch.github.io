@@ -5,4 +5,4 @@ draft = false
 omit_header_text = true
 +++
 
-Hier is nog geen enkele post. Kom later terug. 
+Er zijn hier nog geen berichten. Kom later terug.

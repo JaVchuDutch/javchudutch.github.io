@@ -16,14 +16,14 @@ omit_header_text = true
 - Chatbot voor het leren van zelfstandige naamwoorden
     - <a href="https://t.me/JaVchuDutchNaamwoordenTrainerBot" target="_blank">Telegram</a>
     - <a href="https://botsrv2.com/qb/ja-vchu-dutch/zelfstandig-naamwoord-trainer" target="_blank">Web</a>
-- Chatbot voor het leren van woorden vertalingen
+- Chatbot voor het leren van woordvertalingen
     - <a href="https://t.me/JaVchuDutchVertalingenTrainerBot" target="_blank">Telegram</a>
     - <a href="https://botsrv2.com/qb/ja-vchu-dutch/woord-vertaling-trainer" target="_blank">Web</a>
-- Chatbot voor het leren van woorden vertalingen uit uw persoonlijke woordenlijst
+- Chatbot voor het leren van woordvertalingen uit je eigen woordenlijst
     - <a href="https://t.me/JaVchuDutchPWVTrainerBot" target="_blank">Telegram</a>
     - <a href="https://botsrv2.com/qb/ja-vchu-dutch/persoonlijke-woorden-trainer" target="_blank">Web</a>
-- Oefenen met spreekvaardigheid
+- Spreekvaardigheid oefenen
     - [Zinnen om te oefenen](/speech/)
 
-Lijsten met woorden die door chatbots worden gebruikt, worden gepubliceerd op [link](https://docs.google.com/spreadsheets/d/1b4Gwv3IkfEAna7H_1hwCx1HamKP_rTBI_0ivvYzBge8/edit?gid=0#gid=0).
-Als u opmerkingen of suggesties voor wijzigingen heeft, kunt u de commentaarfunctie in het document gebruiken.
+De woordenlijsten die de chatbots gebruiken, vind je via deze [link](https://docs.google.com/spreadsheets/d/1b4Gwv3IkfEAna7H_1hwCx1HamKP_rTBI_0ivvYzBge8/edit?gid=0#gid=0).
+Heb je opmerkingen of suggesties voor wijzigingen? Gebruik dan de commentaarfunctie in het document.

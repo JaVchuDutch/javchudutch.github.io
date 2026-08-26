@@ -7,7 +7,7 @@ omit_header_text = true
 
 ### Корисні посилання для вивчення нідерландської мови:
 
-- Чат-бот для вивчення препозицій дієслів
+- Чат-бот для вивчення прийменників при дієсловах
     - <a href="https://t.me/YaVchuDutchPrepositiesTrainerBot" target="_blank">Telegram</a>
     - <a href="https://botsrv2.com/qb/ja-vchu-dutch/werkwoord-prepositie-trainer" target="_blank">Web</a>
 - Чат-бот для вивчення форм дієслів
@@ -25,5 +25,5 @@ omit_header_text = true
 - Тренування розмовних навичок
     - [Речення для тренування](/speech/)
 
-Списки слів які використовуються чат-ботами опубліковані за [посиланням](https://docs.google.com/spreadsheets/d/1b4Gwv3IkfEAna7H_1hwCx1HamKP_rTBI_0ivvYzBge8/edit?gid=0#gid=0).
-Якщо ви маєта зауваження або пропозиції до змін, будь ласка використувуйте функцію коментування.
+Списки слів, які використовуються чат-ботами, опубліковані за [посиланням](https://docs.google.com/spreadsheets/d/1b4Gwv3IkfEAna7H_1hwCx1HamKP_rTBI_0ivvYzBge8/edit?gid=0#gid=0).
+Якщо ви маєте зауваження або пропозиції до змін, будь ласка, скористайтеся функцією коментування в документі.
