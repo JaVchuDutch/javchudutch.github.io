@@ -1,0 +1,2 @@
+- [Stay close to ananke](stay-close-to-ananke.md) — config over forking templates; the theme submodule gets updated
+- [One dev server](one-dev-server.md) — keep only `make serve` on 1313 running, don't add a second static server
