@@ -1,6 +1,8 @@
 translations = 'Lees in een andere taal'
 ariaTranslation = 'Lees in een andere taal:'
 
+reviewSource = 'Lees het origineel'
+
 [consent.prompt]
 text = 'We zouden graag {{ .thirdParty }} willen gebruiken om de functionaliteit van deze website te verbeteren.'
 thirdParty = 'de code van derden'
