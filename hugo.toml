@@ -136,6 +136,9 @@ username = 'javchudutch'
 username = 'info@javchudutch.com'
 [params.ananke.social.buymeacoffee]
 username = 'javchudutch'
+# wa.me wants the number in international form: no plus, no leading zero
+[params.ananke.social.whatsapp]
+username = 'REDACTED'
 
 # ananke >= 2.11 keys networks by slug instead of using an array of tables,
 # and ships definitions for email/facebook/instagram itself. Only the two
@@ -144,6 +147,11 @@ username = 'javchudutch'
 # The theme sets profile = false for email; we do want a mailto: follow link.
 [params.ananke.social.networks.email]
 profile = "mailto:%s"
+
+# The theme defines whatsapp as a share target (whatsapp://send) rather than
+# something you can write to, so the profile link is supplied here.
+[params.ananke.social.networks.whatsapp]
+profile = "https://wa.me/%s"
 
 # Not shipped by the theme; icon lives in assets/ananke/socials/buymeacoffee.svg
 [params.ananke.social.networks.buymeacoffee]
@@ -156,7 +164,7 @@ share = false
 
 [params.ananke.social.follow]
 new_window_icon = false
-networks = ["facebook", "instagram", "email", "buymeacoffee"]
+networks = ["facebook", "instagram", "whatsapp", "email", "buymeacoffee"]
 
 # Only networks with a real share endpoint belong here. Instagram and
 # Buy me a coffee have none and used to render broken "%!s(<nil>)" links.
