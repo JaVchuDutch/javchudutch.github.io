@@ -291,15 +291,9 @@ body.has-consent-notice { padding-bottom: 7rem; }
 
 .consent-btn--equal:hover { border-color: var(--text); }
 
-/* Sits directly under the footer and shares its background, so it reads as
-   part of it rather than as a stray control. */
-.consent-reopen-bar {
-  background-color: var(--header-bg);
-  text-align: center;
-  padding: 0 1rem 1.25rem;
-}
-
+/* Sits on the copyright line inside the footer, so it costs no extra height. */
 .consent-reopen {
+  margin-left: 1rem;
   font: inherit;
   font-size: .8rem;
   background: none;

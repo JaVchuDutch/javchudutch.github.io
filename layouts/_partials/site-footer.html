@@ -1,0 +1,14 @@
+{{/* Same as the theme's, with the consent link tucked next to the copyright.
+     It used to sit in a band of its own under the footer, which added half
+     again to the footer's height for a single line of small text. */}}
+<footer class="{{ .Site.Params.background_color_class | compare.Default "bg-black" }} bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between items-center">
+    <div class="dn dib-ns pv2 ph3">
+      <a class="f4 fw4 hover-white white-70 no-underline" href="{{ .Site.Home.Permalink }}">
+        &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ now.Format "2006"}} {{ end }}
+      </a>
+      <button type="button" class="manage-consent consent-reopen">{{ i18n "consent.settings" }}</button>
+    </div>
+    <div>{{ partials.IncludeCached "social/follow.html" . }}</div>
+  </div>
+</footer>
