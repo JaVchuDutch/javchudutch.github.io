@@ -135,6 +135,10 @@ mainSections = ["posts"]
 # the teaching started -- that belongs in the About text, not in a copyright
 # notice, which covers this site's own content.
 copyright_start_year = 2024
+# Chamber of Commerce number of the eenmanszaak JaVchuDutch. Dutch law
+# (art. 3:15d BW) requires a registered business to show it on its website;
+# the footer prints it on every page in both languages.
+kvk = '81728840'
 # Preview image for links shared on social media. Previously this came from the
 # featured_image cascade, which also stamped a full-height cover on every page.
 images = ["/img/logo.jpg"]

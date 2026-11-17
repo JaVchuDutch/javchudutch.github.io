@@ -325,6 +325,13 @@ body > main { flex: 1 0 auto; }
 
 .consent-reopen:hover { color: #d8dae0; }
 
+/* The KvK number shares the copyright line, in the same quiet small print. */
+.footer-kvk {
+  margin-left: 1rem;
+  font-size: .8rem;
+  color: #9a9ca6;
+}
+
 /* ---- narrow screens ----------------------------------------------------- */
 
 @media (max-width: 30rem) {

@@ -17,6 +17,7 @@
       <a class="f4 fw4 hover-white white-70 no-underline" href="{{ .Site.Home.Permalink }}">
         &copy; {{ with .Site.Copyright | compare.Default .Site.Title }} {{ . | safe.HTML }} {{ $years }} {{ end }}
       </a>
+      {{ with site.Params.kvk }}<span class="footer-kvk">KvK {{ . }}</span>{{ end }}
       {{/* Privacy sits here rather than in the top menu: it is looked for
            deliberately, and the main menu has to fit on a phone. */}}
       {{ range .Site.Menus.footer }}

@@ -87,8 +87,8 @@ Upstream changes to it will not reach the site by themselves. What we add on top
 5. the `.nav-bar` wrapper and `.nav-toggle` hamburger, plus `.nav-panel` on the block the theme leaves
    unclassed — ananke ships no mobile menu of any kind, so below 60em its header simply stacks.
 
-Same applies to `layouts/_partials/site-footer.html`: it inlines the consent-settings button and the
-`menus.footer` links on the copyright line, and drops the theme's `dn dib-ns`, which hid that whole block —
+Same applies to `layouts/_partials/site-footer.html`: it inlines the consent-settings button, the
+`menus.footer` links and the KvK number (`params.kvk`, legally required on the site) on the copyright line, and drops the theme's `dn dib-ns`, which hid that whole block —
 and with it the only route to withdrawing cookie consent — below 30em.
 
 Do **not** re-add `layouts/home.html`. A stale pre-2.11 copy of it lived here and silently shadowed the
