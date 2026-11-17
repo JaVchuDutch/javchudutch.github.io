@@ -5,7 +5,7 @@ draft = false
 featured_image = '/img/logo.jpg'
 +++
 
-Hoi! Ik ben Nadiia, gediplomeerd docent Nederlands (NT2).
+Hoi! Ik ben Nadiia, gecertificeerd docent Nederlands (NT2).
 
 Ik help volwassenen en tieners om:
 

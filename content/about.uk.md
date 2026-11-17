@@ -13,6 +13,6 @@ omit_header_text = true
 
 Готую до інтеграційного іспиту (inburgering) на рівнях A2 і B1 та до державних іспитів Staatsexamen NT2 — Programma I на рівні B1 і Programma II на рівні B2.
 
-Маю диплом Opleiding Docent NT2 від Vrije Universiteit Amsterdam (VU).
+Маю сертифікат NT2-docent програми Opleiding Docent NT2 у Vrije Universiteit Amsterdam (VU, 2026) і внесена до <a href="https://bvnt2.org/beroepsregister-nt2-docenten-bvnt2/" target="_blank" rel="noopener">професійного реєстру NT2-викладачів BVNT2</a>.
 
 Про принципи, формати занять і те, кому вони підходять, — на сторінці [Як я працюю](/approach/).
